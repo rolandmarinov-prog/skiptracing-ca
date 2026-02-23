@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SkipTracing.ca — AI-Powered Skip Tracing | Canada + USA</title>
+<meta name="description" content="Find anyone in Canada and across the border. AI-powered skip tracing across 12+ public databases. Individual and corporate searches. Results in seconds.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',Helvetica,Arial,sans-serif;background:#fff;color:#000;-webkit-font-smoothing:antialiased}
+a{color:#000;text-decoration:none}
+
+/* NAV */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:16px 32px;border-bottom:1px solid #eee;position:sticky;top:0;background:rgba(255,255,255,0.97);backdrop-filter:blur(10px);z-index:100}
+.nav-logo{font-size:22px;font-weight:800;letter-spacing:-0.5px}
+.nav-logo span{font-weight:300;color:#999}
+.nav-links{display:flex;gap:24px;align-items:center;font-size:14px}
+.nav-links a:hover{opacity:0.6}
+.btn-signin{padding:8px 20px;background:#000;color:#fff;border:none;border-radius:4px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+.btn-signin:hover{background:#333}
+
+/* HERO */
+.hero{padding:64px 32px 48px;max-width:720px;margin:0 auto;text-align:center}
+.hero h1{font-size:42px;font-weight:800;line-height:1.15;margin-bottom:16px;letter-spacing:-1px}
+.hero p{font-size:17px;color:#666;line-height:1.6}
+.hero-badges{display:flex;justify-content:center;gap:24px;margin-top:24px;font-size:13px;color:#999}
+
+/* SEARCH */
+.search-section{max-width:640px;margin:0 auto;padding:0 24px 48px}
+.tabs{display:flex;border-bottom:2px solid #000;margin-bottom:24px}
+.tab{flex:1;padding:12px;font-size:14px;font-weight:400;background:#fff;color:#000;border:none;cursor:pointer;font-family:inherit;transition:all 0.2s}
+.tab.active{font-weight:700;background:#000;color:#fff}
+.tab:hover:not(.active){background:#f5f5f5}
+
+.region-toggle{display:flex;gap:8px;margin-bottom:24px;justify-content:center}
+.region-btn{padding:8px 20px;font-size:13px;background:#f5f5f5;color:#333;border:1px solid #ddd;border-radius:20px;cursor:pointer;font-family:inherit;font-weight:500;transition:all 0.2s}
+.region-btn.active{background:#000;color:#fff;border-color:#000}
+.region-btn:hover:not(.active){border-color:#999}
+.region-sub{font-size:11px;opacity:0.7}
+
+.form-grid{display:grid;gap:16px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-label{font-size:12px;font-weight:600;color:#333;margin-bottom:4px;display:block;letter-spacing:0.3px}
+.form-input{width:100%;padding:12px 14px;font-size:15px;border:1px solid #ddd;border-radius:6px;outline:none;font-family:inherit;transition:border-color 0.2s}
+.form-input:focus{border-color:#000}
+.form-input::placeholder{color:#bbb}
+select.form-input{cursor:pointer;appearance:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M6 8L1 3h10z' fill='%23999'/%3E%3C/svg%3E") no-repeat right 14px center #fff}
+
+.corp-divider{border-top:1px solid #eee;padding-top:16px;margin-top:8px}
+.corp-label{font-size:12px;font-weight:600;color:#999;letter-spacing:1px;margin-bottom:12px}
+
+.btn-search{width:100%;padding:16px;font-size:16px;font-weight:700;background:#000;color:#fff;border:none;border-radius:6px;cursor:pointer;margin-top:24px;letter-spacing:0.5px;font-family:inherit;transition:background 0.2s}
+.btn-search:hover{background:#333}
+.btn-search:disabled{background:#666;cursor:default}
+
+/* SEARCH ANIMATION */
+.search-anim{padding:40px 0;text-align:center}
+.search-spinner{font-size:48px;animation:spin 1.5s linear infinite;display:inline-block;margin-bottom:16px}
+.search-status{font-size:18px;font-weight:600;margin-bottom:24px}
+.source-list{max-width:400px;margin:0 auto;text-align:left}
+.source-item{font-size:13px;padding:4px 0;color:#666;opacity:0;animation:fadeSlideIn 0.3s ease forwards;display:flex;align-items:center;gap:8px}
+.source-check{color:#22c55e;font-size:11px}
+.search-done{font-size:48px;margin-bottom:8px}
+.search-found{font-size:20px;font-weight:700}
+
+/* RESULTS */
+.results-box{border:2px solid #000;border-radius:8px;overflow:hidden;margin:24px 0}
+.results-header{background:#000;color:#fff;padding:16px 24px;font-size:14px;font-weight:600;letter-spacing:1px}
+.results-body{padding:24px}
+.results-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;margin-bottom:24px}
+.stat-box{text-align:center;padding:16px;background:#f9f9f9;border-radius:6px}
+.stat-num{font-size:32px;font-weight:800}
+.stat-label{font-size:12px;color:#666;margin-top:4px}
+.results-corp{padding:12px 16px;background:#f0f7ff;border-radius:6px;margin-bottom:16px;font-size:14px}
+.results-usa{padding:12px 16px;background:#fefce8;border-radius:6px;margin-bottom:16px;font-size:14px}
+.results-blur{padding:16px;background:#f9f9f9;border-radius:6px;margin-bottom:24px;text-align:center;color:#999;font-size:14px}
+.blur-line{filter:blur(5px);margin-bottom:8px;user-select:none;pointer-events:none}
+.btn-download{width:100%;padding:16px;font-size:16px;font-weight:700;background:#000;color:#fff;border:none;border-radius:6px;cursor:pointer;letter-spacing:0.5px;font-family:inherit;transition:background 0.2s}
+.btn-download:hover{background:#333}
+.download-note{text-align:center;font-size:12px;color:#999;margin-top:8px}
+
+/* PRICING */
+.pricing{background:#fafafa;padding:64px 24px;border-top:1px solid #eee}
+.pricing-inner{max-width:800px;margin:0 auto}
+.pricing h2{font-size:28px;font-weight:800;text-align:center;margin-bottom:8px}
+.pricing-sub{text-align:center;color:#666;font-size:15px;margin-bottom:40px}
+.pricing-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.price-card{background:#fff;border:1px solid #eee;border-radius:8px;padding:32px 24px;text-align:center;position:relative}
+.price-card.featured{border:2px solid #000}
+.price-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#000;color:#fff;font-size:11px;font-weight:600;padding:4px 16px;border-radius:12px;letter-spacing:1px}
+.price-tier{font-size:13px;font-weight:600;color:#999;letter-spacing:1px;margin-bottom:16px}
+.price-amount{font-size:40px;font-weight:800}
+.price-amount span{font-size:24px}
+.price-per{font-size:13px;color:#666;margin-bottom:24px}
+.price-features{font-size:13px;color:#333;line-height:2;text-align:left}
+
+/* BULK */
+.bulk{padding:64px 24px;max-width:640px;margin:0 auto}
+.bulk h2{font-size:28px;font-weight:800;text-align:center;margin-bottom:8px}
+.bulk-sub{text-align:center;color:#666;font-size:15px;margin-bottom:32px}
+.bulk-drop{border:2px dashed #ddd;border-radius:8px;padding:48px 24px;text-align:center;cursor:pointer;transition:border-color 0.2s}
+.bulk-drop:hover{border-color:#000}
+.bulk-icon{font-size:32px;margin-bottom:12px}
+.bulk-text{font-size:15px;font-weight:600;margin-bottom:8px}
+.bulk-hint{font-size:13px;color:#999}
+.bulk-features{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.bulk-feat{padding:16px;background:#f9f9f9;border-radius:6px;text-align:center}
+.bulk-feat-title{font-size:13px;font-weight:600}
+.bulk-feat-sub{font-size:12px;color:#666}
+
+/* TRUST */
+.trust{background:#fafafa;padding:48px 24px;border-top:1px solid #eee}
+.trust-inner{max-width:800px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:24px;text-align:center}
+.trust-num{font-size:28px;font-weight:800}
+.trust-label{font-size:12px;color:#666}
+
+/* CTA */
+.cta{padding:64px 24px;text-align:center;border-top:1px solid #eee}
+.cta h2{font-size:28px;font-weight:800;margin-bottom:12px}
+.cta p{font-size:15px;color:#666;margin-bottom:24px}
+.btn-cta{padding:14px 40px;font-size:15px;font-weight:700;background:#000;color:#fff;border:none;border-radius:6px;cursor:pointer;font-family:inherit;letter-spacing:0.5px}
+.btn-cta:hover{background:#333}
+
+/* FOOTER */
+.footer{padding:32px 24px;border-top:1px solid #eee;text-align:center}
+.footer-brand{font-size:14px;font-weight:600;margin-bottom:8px}
+.footer-legal{font-size:12px;color:#999;line-height:1.8}
+
+/* ANIMATIONS */
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes fadeSlideIn{from{opacity:0;transform:translateX(-10px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{animation:fadeIn 0.5s ease forwards}
+
+/* MOBILE */
+@media(max-width:768px){
+  .hero h1{font-size:28px}
+  .nav{padding:12px 16px}
+  .nav-links a:not(.btn-signin){display:none}
+  .form-row{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
+  .trust-inner{grid-template-columns:1fr 1fr}
+  .results-stats{grid-template-columns:1fr}
+  .hero-badges{flex-direction:column;gap:8px}
+  .bulk-features{grid-template-columns:1fr}
+}
+
+/* HIDDEN */
+.hidden{display:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">SkipTracing<span>.ca</span></div>
+  <div class="nav-links">
+    <a href="#search">Search</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#bulk">Bulk</a>
+    <a href="#contact">Contact</a>
+    <button class="btn-signin">Sign In</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>Find anyone in Canada.<br>And across the border.</h1>
+  <p>AI-powered skip tracing across 12+ public databases. Individual and corporate searches. Canada + USA cross-border. Results in seconds, not days.</p>
+  <div class="hero-badges">
+    <span>🇨🇦 PIPEDA Compliant</span>
+    <span>·</span>
+    <span>🔒 Public Records Only</span>
+    <span>·</span>
+    <span>⚡ Instant Results</span>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<div class="search-section" id="search">
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab active" data-tab="individual" onclick="switchTab('individual')">Individual</button>
+    <button class="tab" data-tab="corporation" onclick="switchTab('corporation')">Corporation</button>
+    <button class="tab" data-tab="both" onclick="switchTab('both')">Both</button>
+  </div>
+
+  <!-- Region Toggle -->
+  <div class="region-toggle">
+    <button class="region-btn" data-region="canada" onclick="switchRegion('canada')">🇨🇦 Canada <span class="region-sub">Only</span></button>
+    <button class="region-btn active" data-region="both" onclick="switchRegion('both')">🇨🇦+🇺🇸 <span class="region-sub">Both</span></button>
+    <button class="region-btn" data-region="usa" onclick="switchRegion('usa')">🇺🇸 USA <span class="region-sub">Only</span></button>
+  </div>
+
+  <!-- Individual Fields -->
+  <div id="fields-individual" class="form-grid">
+    <div class="form-row">
+      <div>
+        <label class="form-label">First Name *</label>
+        <input class="form-input" id="firstName" placeholder="John">
+      </div>
+      <div>
+        <label class="form-label">Last Name *</label>
+        <input class="form-input" id="lastName" placeholder="Smith">
+      </div>
+    </div>
+    <div>
+      <label class="form-label">Date of Birth</label>
+      <input class="form-input" type="date" id="dob">
+    </div>
+    <div>
+      <label class="form-label">Last Known Address</label>
+      <input class="form-input" id="lastAddress" placeholder="123 Main St, Toronto, ON">
+    </div>
+    <div class="form-row">
+      <div>
+        <label class="form-label">Phone</label>
+        <input class="form-input" id="phone" placeholder="(416) 555-0100">
+      </div>
+      <div>
+        <label class="form-label">Email</label>
+        <input class="form-input" id="email" placeholder="john@email.com">
+      </div>
+    </div>
+  </div>
+
+  <!-- Corporation Fields -->
+  <div id="fields-corporation" class="form-grid hidden">
+    <div class="form-row">
+      <div>
+        <label class="form-label">Company Name *</label>
+        <input class="form-input" id="companyName" placeholder="ABC Holdings Inc.">
+      </div>
+      <div>
+        <label class="form-label">Incorporation #</label>
+        <input class="form-input" id="incNumber" placeholder="1234567">
+      </div>
+    </div>
+    <div class="form-row">
+      <div>
+        <label class="form-label">Province / State</label>
+        <select class="form-input" id="province">
+          <option value="">Select...</option>
+          <optgroup label="Canada">
+            <option>Ontario</option><option>Quebec</option><option>British Columbia</option>
+            <option>Alberta</option><option>Manitoba</option><option>Saskatchewan</option>
+            <option>Nova Scotia</option><option>New Brunswick</option><option>Newfoundland &amp; Labrador</option>
+            <option>Prince Edward Island</option><option>Northwest Territories</option><option>Nunavut</option><option>Yukon</option>
+          </optgroup>
+          <optgroup label="United States">
+            <option>New York</option><option>California</option><option>Florida</option>
+            <option>Texas</option><option>Illinois</option><option>Other US State</option>
+          </optgroup>
+        </select>
+      </div>
+      <div>
+        <label class="form-label">Director / Officer Name</label>
+        <input class="form-input" id="directorName" placeholder="Director name">
+      </div>
+    </div>
+  </div>
+
+  <!-- Both Fields (combined) -->
+  <div id="fields-both" class="form-grid hidden">
+    <div class="form-row">
+      <div>
+        <label class="form-label">First Name *</label>
+        <input class="form-input" placeholder="John">
+      </div>
+      <div>
+        <label class="form-label">Last Name *</label>
+        <input class="form-input" placeholder="Smith">
+      </div>
+    </div>
+    <div>
+      <label class="form-label">Date of Birth</label>
+      <input class="form-input" type="date">
+    </div>
+    <div>
+      <label class="form-label">Last Known Address</label>
+      <input class="form-input" placeholder="123 Main St, Toronto, ON">
+    </div>
+    <div class="form-row">
+      <div>
+        <label class="form-label">Phone</label>
+        <input class="form-input" placeholder="(416) 555-0100">
+      </div>
+      <div>
+        <label class="form-label">Email</label>
+        <input class="form-input" placeholder="john@email.com">
+      </div>
+    </div>
+    <div class="corp-divider">
+      <div class="corp-label">CORPORATE SEARCH</div>
+    </div>
+    <div class="form-row">
+      <div>
+        <label class="form-label">Company Name</label>
+        <input class="form-input" placeholder="ABC Holdings Inc.">
+      </div>
+      <div>
+        <label class="form-label">Incorporation #</label>
+        <input class="form-input" placeholder="1234567">
+      </div>
+    </div>
+    <div class="form-row">
+      <div>
+        <label class="form-label">Province / State</label>
+        <select class="form-input">
+          <option value="">Select...</option>
+          <optgroup label="Canada">
+            <option>Ontario</option><option>Quebec</option><option>British Columbia</option>
+            <option>Alberta</option><option>Manitoba</option><option>Saskatchewan</option>
+            <option>Nova Scotia</option><option>New Brunswick</option><option>Newfoundland &amp; Labrador</option>
+            <option>Prince Edward Island</option><option>Northwest Territories</option><option>Nunavut</option><option>Yukon</option>
+          </optgroup>
+          <optgroup label="United States">
+            <option>New York</option><option>California</option><option>Florida</option>
+            <option>Texas</option><option>Illinois</option><option>Other US State</option>
+          </optgroup>
+        </select>
+      </div>
+      <div>
+        <label class="form-label">Director / Officer Name</label>
+        <input class="form-input" placeholder="Director name">
+      </div>
+    </div>
+  </div>
+
+  <!-- Search Button -->
+  <button class="btn-search" id="btnSearch" onclick="startSearch()">🔍  SEARCH</button>
+
+  <!-- Search Animation Container -->
+  <div id="searchAnim" class="hidden"></div>
+
+  <!-- Results Container -->
+  <div id="resultsContainer" class="hidden"></div>
+
+</div>
+
+<!-- PRICING -->
+<div class="pricing" id="pricing">
+  <div class="pricing-inner">
+    <h2>Pricing</h2>
+    <p class="pricing-sub">Pay per search or save with bulk and subscription plans.</p>
+    <div class="pricing-grid">
+      <div class="price-card">
+        <div class="price-tier">SINGLE SEARCH</div>
+        <div class="price-amount">$9<span>.99</span></div>
+        <div class="price-per">per search</div>
+        <div class="price-features">
+          ✓ Individual + Corporate<br>
+          ✓ Canada + USA cross-border<br>
+          ✓ 12+ databases<br>
+          ✓ PDF report<br>
+          ✓ Confidence scoring
+        </div>
+      </div>
+      <div class="price-card featured">
+        <div class="price-badge">POPULAR</div>
+        <div class="price-tier">BULK UPLOAD</div>
+        <div class="price-amount">$1<span>.99</span></div>
+        <div class="price-per">per search (100+)</div>
+        <div class="price-features">
+          ✓ Upload CSV / Excel<br>
+          ✓ 100 searches — $1.99 ea<br>
+          ✓ 500 searches — $1.49 ea<br>
+          ✓ 1,000+ searches — $0.99 ea<br>
+          ✓ Batch PDF reports
+        </div>
+      </div>
+      <div class="price-card">
+        <div class="price-tier">SUBSCRIPTION</div>
+        <div class="price-amount">$299</div>
+        <div class="price-per">per month</div>
+        <div class="price-features">
+          ✓ 50 searches included<br>
+          ✓ $599/mo — 150 searches<br>
+          ✓ $999/mo — unlimited + API<br>
+          ✓ Priority processing<br>
+          ✓ Dedicated support
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BULK -->
+<div class="bulk" id="bulk">
+  <h2>Bulk Upload</h2>
+  <p class="bulk-sub">Upload a spreadsheet with up to 10,000 searches. We process overnight, you download results in the morning.</p>
+  <div class="bulk-drop" onclick="alert('Bulk upload coming soon! Contact us for early access.')">
+    <div class="bulk-icon">📄</div>
+    <div class="bulk-text">Drop your CSV or Excel file here</div>
+    <div class="bulk-hint">Columns: Name, Last Address, Phone, Email, Corporation (optional)</div>
+  </div>
+  <div class="bulk-features">
+    <div class="bulk-feat">
+      <div class="bulk-feat-title">Individual + Corp</div>
+      <div class="bulk-feat-sub">Cross-referenced automatically</div>
+    </div>
+    <div class="bulk-feat">
+      <div class="bulk-feat-title">🇨🇦 + 🇺🇸 Cross-Border</div>
+      <div class="bulk-feat-sub">Both countries searched</div>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="trust-inner">
+    <div><div class="trust-num">12+</div><div class="trust-label">Databases Searched</div></div>
+    <div><div class="trust-num">10+</div><div class="trust-label">Years Industry Experience</div></div>
+    <div><div class="trust-num">2</div><div class="trust-label">Countries (CA + US)</div></div>
+    <div><div class="trust-num">100%</div><div class="trust-label">PIPEDA Compliant</div></div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta" id="contact">
+  <h2>Ready to find who you're looking for?</h2>
+  <p>Start with a single search or contact us for enterprise pricing.</p>
+  <button class="btn-cta" onclick="document.getElementById('search').scrollIntoView({behavior:'smooth'})">Start Searching</button>
+  <p style="margin-top:16px;font-size:13px;color:#999">
+    Questions? Email <a href="mailto:info@skiptracing.ca" style="color:#000;text-decoration:underline">info@skiptracing.ca</a> or call <a href="tel:+14165551000" style="color:#000;text-decoration:underline">(416) 555-1000</a>
+  </p>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-brand">SkipTracing.ca</div>
+  <div class="footer-legal">
+    Recovery Logistics Systems Inc. (2621040 Ontario Inc.) · Toronto, Ontario, Canada<br>
+    All searches use publicly available information only. PIPEDA Section 7(1)(d) compliant.<br>
+    Patent pending. © 2026 All rights reserved.
+  </div>
+</footer>
+
+<script>
+// State
+let currentTab = 'individual';
+let currentRegion = 'both';
+
+// Tab switching
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelector(`.tab[data-tab="${tab}"]`).classList.add('active');
+  document.getElementById('fields-individual').classList.toggle('hidden', tab !== 'individual');
+  document.getElementById('fields-corporation').classList.toggle('hidden', tab !== 'corporation');
+  document.getElementById('fields-both').classList.toggle('hidden', tab !== 'both');
+}
+
+// Region switching
+function switchRegion(region) {
+  currentRegion = region;
+  document.querySelectorAll('.region-btn').forEach(b => b.classList.remove('active'));
+  document.querySelector(`.region-btn[data-region="${region}"]`).classList.add('active');
+}
+
+// Search
+function startSearch() {
+  const btn = document.getElementById('btnSearch');
+  const animDiv = document.getElementById('searchAnim');
+  const resultsDiv = document.getElementById('resultsContainer');
+
+  btn.disabled = true;
+  btn.textContent = 'Searching...';
+  resultsDiv.classList.add('hidden');
+  animDiv.classList.remove('hidden');
+
+  const sources = [
+    'Provincial Court Records', 'Corporate Registries', 'PPSA Database',
+    'Bankruptcy Records', 'Land Registry', 'Public Directories',
+    'Social Media (Public)', 'Professional Licenses',
+    currentRegion !== 'canada' ? 'USA Cross-Border Databases' : null,
+    'Vehicle Records', 'Domain WHOIS', 'News Archives'
+  ].filter(Boolean);
+
+  // Build animation HTML
+  animDiv.innerHTML = `
+    <div class="search-anim">
+      <div class="search-spinner">🔍</div>
+      <div class="search-status">Searching<span id="dots"></span></div>
+      <div class="source-list" id="sourceList"></div>
+    </div>
+  `;
+
+  // Dots animation
+  let dotCount = 0;
+  const dotInterval = setInterval(() => {
+    dotCount = (dotCount + 1) % 4;
+    const dotsEl = document.getElementById('dots');
+    if (dotsEl) dotsEl.textContent = '.'.repeat(dotCount);
+  }, 400);
+
+  // Add sources one by one
+  let idx = 0;
+  const sourceInterval = setInterval(() => {
+    if (idx < sources.length) {
+      const list = document.getElementById('sourceList');
+      if (list) {
+        const item = document.createElement('div');
+        item.className = 'source-item';
+        item.style.animationDelay = '0s';
+        item.innerHTML = `<span class="source-check">✓</span> ${sources[idx]}`;
+        list.appendChild(item);
+      }
+      idx++;
+    }
+  }, 350);
+
+  // Complete after all sources
+  setTimeout(() => {
+    clearInterval(dotInterval);
+    clearInterval(sourceInterval);
+
+    animDiv.innerHTML = `
+      <div class="search-anim fade-in">
+        <div class="search-done">✅</div>
+        <div class="search-found">Information Found!</div>
+      </div>
+    `;
+
+    setTimeout(() => {
+      animDiv.classList.add('hidden');
+      showResults();
+      btn.disabled = false;
+      btn.textContent = '🔍  SEARCH';
+    }, 1200);
+
+  }, sources.length * 350 + 800);
+}
+
+function showResults() {
+  const resultsDiv = document.getElementById('resultsContainer');
+  const showCorp = currentTab === 'corporation' || currentTab === 'both';
+  const showUSA = currentRegion === 'both' || currentRegion === 'usa';
+
+  resultsDiv.innerHTML = `
+    <div class="results-box fade-in">
+      <div class="results-header">RESULTS FOUND</div>
+      <div class="results-body">
+        <div class="results-stats">
+          <div class="stat-box"><div class="stat-num">3</div><div class="stat-label">Addresses</div></div>
+          <div class="stat-box"><div class="stat-num">1</div><div class="stat-label">Phone Numbers</div></div>
+          <div class="stat-box"><div class="stat-num">2</div><div class="stat-label">Email Addresses</div></div>
+        </div>
+        ${showCorp ? '<div class="results-corp"><strong>2</strong> affiliated corporations identified with <strong>3</strong> registered addresses</div>' : ''}
+        ${showUSA ? '<div class="results-usa">🇺🇸 <strong>USA cross-border match found</strong> — possible current address in Florida</div>' : ''}
+        <div class="results-blur">
+          <div class="blur-line">123 Example Street, Toronto ON M5V 2K7 — Confidence: 87%</div>
+          <div class="blur-line">(416) 555-0142 — Active — Last verified: Jan 2026</div>
+          <div class="blur-line">j.smith.work@gmail.com — Linked to LinkedIn profile</div>
+        </div>
+        <button class="btn-download" onclick="alert('Stripe payment integration coming soon! Contact info@skiptracing.ca for early access.')">
+          Download Full Report — $9.99
+        </button>
+        <div class="download-note">Secure payment via Stripe. PDF report delivered instantly.</div>
+      </div>
+    </div>
+  `;
+  resultsDiv.classList.remove('hidden');
+  resultsDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+</script>
+
+</body>
+</html>
