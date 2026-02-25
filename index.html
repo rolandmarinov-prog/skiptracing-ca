@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkipTracing.ca — Public Record Search | Recovery Logistics Systems Inc.</title>
+    <meta name="description" content="AI-powered skip tracing across 47+ public databases. Canada, USA, UK, Australia, NZ. PIPEDA compliant. One search. All sources.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --red: #AF3C43; --dark-red: #8B0000; --blue: #26374A; --light-blue: #335075;
+            --green: #1B6C35; --bg: #FFFFFF; --surface: #F5F5F5; --border: #CCCCCC;
+            --border-light: #E0E0E0; --text: #333333; --text-light: #666666; --black: #000000;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Sans', -apple-system, BlinkMacSystemFont, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; font-size: 16px; }
+        .gov-bar { background: var(--blue); color: #fff; padding: 0.4rem 2rem; font-size: 0.75rem; display: flex; justify-content: space-between; align-items: center; }
+        .gov-bar a { color: #ccc; text-decoration: none; margin-left: 1.5rem; }
+        .gov-bar a:hover { color: #fff; text-decoration: underline; }
+        header { background: #fff; border-bottom: 3px solid var(--red); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .header-left { display: flex; align-items: center; gap: 1.5rem; }
+        .logo { font-size: 1.6rem; font-weight: 700; color: var(--black); letter-spacing: -0.5px; }
+        .logo span { color: var(--red); }
+        .tagline { font-size: 0.8rem; color: var(--text-light); border-left: 2px solid var(--border); padding-left: 1rem; line-height: 1.3; }
+        nav a { color: var(--blue); text-decoration: none; font-size: 0.9rem; font-weight: 500; margin-left: 2rem; }
+        nav a:hover { color: var(--red); text-decoration: underline; }
+        .btn-signin { background: var(--blue); color: #fff; padding: 0.45rem 1.2rem; border-radius: 4px; font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-left: 2rem; }
+        .btn-signin:hover { background: var(--light-blue); }
+        .hero { background: var(--surface); border-bottom: 1px solid var(--border-light); padding: 2.5rem 2rem 2rem; text-align: center; }
+        .hero-inner { max-width: 800px; margin: 0 auto; }
+        .hero h1 { font-size: 2.2rem; font-weight: 700; color: var(--black); line-height: 1.2; margin-bottom: 0.75rem; }
+        .hero p { font-size: 1rem; color: var(--text-light); margin-bottom: 1.2rem; }
+        .compliance-badges { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+        .comp-badge { display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; color: var(--text); font-weight: 500; }
+        .comp-badge .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+        .dot-red { background: var(--red); } .dot-green { background: var(--green); } .dot-blue { background: var(--blue); }
+        .search-section { max-width: 900px; margin: 2rem auto; padding: 0 2rem; }
+        .search-card { border: 1px solid var(--border); border-radius: 6px; background: #fff; overflow: hidden; }
+        .search-header { background: var(--blue); color: #fff; padding: 1rem 1.5rem; font-size: 1.1rem; font-weight: 600; }
+        .search-header small { font-weight: 400; font-size: 0.8rem; opacity: 0.8; display: block; margin-top: 0.2rem; }
+        .search-body { padding: 1.5rem; }
+        .section-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--red); margin-bottom: 0.75rem; padding-bottom: 0.4rem; border-bottom: 1px solid var(--border-light); margin-top: 1.5rem; }
+        .section-label:first-child { margin-top: 0; }
+        .form-row { display: grid; gap: 1rem; margin-bottom: 0.75rem; }
+        .cols-2 { grid-template-columns: 1fr 1fr; } .cols-3 { grid-template-columns: 1fr 1fr 1fr; } .cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+        .field label { display: block; font-size: 0.78rem; font-weight: 600; color: var(--text-light); margin-bottom: 0.25rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .field input, .field select { width: 100%; padding: 0.6rem 0.75rem; border: 1px solid var(--border); border-radius: 4px; font-size: 0.95rem; font-family: inherit; background: #fff; color: var(--text); }
+        .field input:focus, .field select:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 2px rgba(38,55,74,0.15); }
+        .field input::placeholder { color: #bbb; }
+        .vin-input { font-family: 'Courier New', Courier, monospace !important; letter-spacing: 2.5px; font-size: 1.1rem !important; text-transform: uppercase; }
+        .field-hint { font-size: 0.72rem; color: #999; margin-top: 0.2rem; }
+        .search-footer { padding: 1rem 1.5rem; background: var(--surface); border-top: 1px solid var(--border-light); display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem; color: var(--text-light); }
+        .search-btn { display: block; width: 100%; padding: 1rem; margin-top: 1.5rem; background: var(--red); color: #fff; border: none; border-radius: 5px; font-size: 1.15rem; font-weight: 700; cursor: pointer; font-family: inherit; letter-spacing: 0.5px; transition: background 0.2s; }
+        .search-btn:hover { background: var(--dark-red); }
+        .fields-counter { text-align: center; font-size: 0.85rem; color: var(--text-light); margin-top: 0.75rem; }
+        .fields-counter strong { color: var(--green); }
+        .result-card { border: 1px solid var(--border-light); border-left: 3px solid var(--blue); padding: 1rem; margin-bottom: 0.75rem; background: #fafafa; }
+        .result-title { font-size: 1.05rem; font-weight: 600; }
+        .result-meta { font-size: 0.8rem; color: var(--text-light); margin-top: 0.2rem; }
+        .result-details { margin-top: 0.5rem; font-size: 0.85rem; background: #f0f0f0; padding: 0.75rem; border-radius: 4px; }
+        .api-badge { background: var(--green); color: #fff; padding: 0.15rem 0.5rem; border-radius: 3px; font-size: 0.7rem; margin-left: 0.5rem; font-weight: 600; }
+        .pricing-section { background: var(--surface); padding: 3rem 2rem; text-align: center; border-top: 1px solid var(--border-light); }
+        .pricing-inner { max-width: 1000px; margin: 0 auto; }
+        .pricing-section h2 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .pricing-inner > p { color: var(--text-light); margin-bottom: 2rem; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+        .price-card { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 1.5rem; text-align: left; }
+        .price-card.featured { border: 2px solid var(--red); position: relative; }
+        .price-card.featured::before { content: 'RECOMMENDED'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--red); color: #fff; padding: 0.2rem 1rem; border-radius: 3px; font-size: 0.7rem; font-weight: 700; }
+        .price-card h3 { font-size: 1rem; margin-bottom: 0.5rem; }
+        .price-amount { font-size: 1.8rem; font-weight: 700; color: var(--black); margin-bottom: 1rem; }
+        .price-amount span { font-size: 0.8rem; font-weight: 400; color: var(--text-light); }
+        .price-card ul { list-style: none; margin-bottom: 1.5rem; }
+        .price-card li { padding: 0.3rem 0; font-size: 0.85rem; color: var(--text); padding-left: 1.2rem; position: relative; }
+        .price-card li::before { content: '\2713'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+        .price-btn { display: block; text-align: center; padding: 0.6rem; border-radius: 4px; background: var(--blue); color: #fff; text-decoration: none; font-weight: 600; font-size: 0.85rem; }
+        .price-btn:hover { background: var(--light-blue); }
+        .sources-section { max-width: 1000px; margin: 0 auto; padding: 3rem 2rem; text-align: center; }
+        .sources-section h2 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .sources-section > p { color: var(--text-light); margin-bottom: 2rem; }
+        .source-country { margin-bottom: 1.5rem; text-align: left; }
+        .source-country h3 { font-size: 1rem; margin-bottom: 0.5rem; color: var(--blue); }
+        .source-list { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+        .src { padding: 0.3rem 0.75rem; background: var(--surface); border: 1px solid var(--border-light); border-radius: 3px; font-size: 0.8rem; color: var(--text); }
+        .src.api { background: #e8f4e8; border-color: #b8d4b8; }
+        .api-tag { background: var(--blue); color: #fff; padding: 0.1rem 0.4rem; border-radius: 2px; font-size: 0.65rem; margin-left: 0.3rem; font-weight: 700; }
+        .contact-section { background: var(--surface); padding: 2rem; text-align: center; border-top: 1px solid var(--border-light); }
+        .contact-section h2 { margin-bottom: 0.5rem; }
+        .contact-section a { color: var(--blue); }
+        footer { background: var(--blue); color: #ccc; padding: 2rem; text-align: center; font-size: 0.8rem; line-height: 1.8; }
+        footer strong { color: #fff; }
+        .footer-legal { margin-top: 1rem; font-size: 0.7rem; color: #999; max-width: 800px; margin: 1rem auto 0; }
+        @media (max-width: 768px) { .pricing-grid { grid-template-columns: 1fr 1fr; } .cols-2, .cols-3, .cols-4 { grid-template-columns: 1fr; } header { flex-direction: column; gap: 1rem; } .hero h1 { font-size: 1.6rem; } nav { display: none; } }
+        @media (max-width: 480px) { .pricing-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+<div class="gov-bar">
+    <span>Recovery Logistics Systems Inc. (2621040 Ontario Inc.)</span>
+    <div><a href="#pricing">Pricing</a><a href="#sources">Databases</a><a href="#contact">Contact</a></div>
+</div>
+<header>
+    <div class="header-left">
+        <div class="logo">Skip<span>Tracing</span>.ca</div>
+        <div class="tagline">Public Record Intelligence<br>PIPEDA Section 7(1)(d) Compliant</div>
+    </div>
+    <nav><a href="#search">Search</a><a href="#pricing">Pricing</a><a href="#sources">Databases</a><a href="#contact">Contact</a><a href="#" class="btn-signin">Sign In</a></nav>
+</header>
+<section class="hero">
+    <div class="hero-inner">
+        <h1>One Subject. One Search.<br>Every Public Record.</h1>
+        <p>Enter everything you know — name, phone, address, employer, VIN — and we query 47 databases across 5 countries simultaneously. The more you provide, the more we find.</p>
+        <div class="compliance-badges">
+            <span class="comp-badge"><span class="dot dot-red"></span> PIPEDA Compliant</span>
+            <span class="comp-badge"><span class="dot dot-green"></span> Public Records Only</span>
+            <span class="comp-badge"><span class="dot dot-blue"></span> Five Eyes Coverage</span>
+            <span class="comp-badge"><span class="dot dot-green"></span> 21 Live API Connections</span>
+        </div>
+    </div>
+</section>
+<section class="search-section" id="search">
+    <div class="search-card">
+        <div class="search-header">Subject Search — Skip Trace Report<small>Fill in every field you have. The more data, the better the results. Minimum: one field required.</small></div>
+        <div class="search-body">
+            <div class="section-label">Person Information</div>
+            <div class="form-row cols-3">
+                <div class="field"><label>First Name</label><input type="text" id="s-first" placeholder="John"></div>
+                <div class="field"><label>Middle Name</label><input type="text" id="s-middle" placeholder="Michael"></div>
+                <div class="field"><label>Last Name</label><input type="text" id="s-last" placeholder="Smith"></div>
+            </div>
+            <div class="form-row cols-3">
+                <div class="field"><label>Date of Birth</label><input type="date" id="s-dob"></div>
+                <div class="field"><label>Phone</label><input type="tel" id="s-phone" placeholder="(416) 555-1234"></div>
+                <div class="field"><label>Email</label><input type="email" id="s-email" placeholder="john@example.com"></div>
+            </div>
+            <div class="section-label">Last Known Address</div>
+            <div class="form-row cols-2">
+                <div class="field" style="grid-column:span 2"><label>Street Address</label><input type="text" id="s-address" placeholder="123 Main Street, Unit 4"></div>
+            </div>
+            <div class="form-row cols-4">
+                <div class="field"><label>City</label><input type="text" id="s-city" placeholder="Toronto"></div>
+                <div class="field"><label>Province / State</label>
+                    <select id="s-province"><option value="">Any</option><option value="ON">Ontario</option><option value="BC">British Columbia</option><option value="AB">Alberta</option><option value="QC">Quebec</option><option value="MB">Manitoba</option><option value="SK">Saskatchewan</option><option value="NS">Nova Scotia</option><option value="NB">New Brunswick</option><option value="NL">Newfoundland</option><option value="PE">PEI</option><option value="NT">NWT</option><option value="YT">Yukon</option><option value="NU">Nunavut</option></select>
+                </div>
+                <div class="field"><label>Postal / ZIP</label><input type="text" id="s-postal" placeholder="M5V 2T6"></div>
+                <div class="field"><label>Country</label>
+                    <select id="s-country"><option value="CA">Canada</option><option value="US">United States</option><option value="UK">United Kingdom</option><option value="AU">Australia</option><option value="NZ">New Zealand</option><option value="">All Countries</option></select>
+                </div>
+            </div>
+            <div class="section-label">Employment / Business</div>
+            <div class="form-row cols-2">
+                <div class="field"><label>Employer / Company Name</label><input type="text" id="s-company" placeholder="ABC Corp Inc."></div>
+                <div class="field"><label>Corporation Number</label><input type="text" id="s-corpnum" placeholder="123456-7"></div>
+            </div>
+            <div class="section-label">Vehicle</div>
+            <div class="form-row cols-2">
+                <div class="field"><label>VIN</label><input type="text" id="s-vin" class="vin-input" placeholder="1HGCM82633A004352" maxlength="17" autocomplete="off"><div class="field-hint">Dashboard (driver side) or door jamb. 17 characters.</div></div>
+                <div class="field"><label>License Plate</label><input type="text" id="s-plate" placeholder="ABCD 123" style="text-transform:uppercase;"><div class="field-hint">Include province/state if known.</div></div>
+            </div>
+            <div class="fields-counter" id="fields-counter"><strong>0</strong> fields populated — fill at least one to search</div>
+            <button class="search-btn" onclick="doSearch()">Run Skip Trace &middot; $19.99</button>
+        </div>
+        <div class="search-footer">
+            <span>Querying <strong>47 databases</strong> across <strong>5 countries</strong></span>
+            <span><strong>21</strong> live API connections &middot; Updated in real-time</span>
+        </div>
+    </div>
+    <div id="results" style="display:none;"></div>
+</section>
+<section class="pricing-section" id="pricing">
+    <div class="pricing-inner">
+        <h2>Service Fees</h2>
+        <p>From a single skip trace to enterprise-scale investigations. All prices in CAD.</p>
+        <div class="pricing-grid">
+            <div class="price-card"><h3>Single Search</h3><div class="price-amount">$19.99 <span>per subject</span></div><ul><li>One subject — all fields</li><li>All 47 sources queried</li><li>Five Eyes cross-border</li><li>PDF report download</li><li>Results in under 30 seconds</li></ul><a href="#search" class="price-btn">Start Search</a></div>
+            <div class="price-card featured"><h3>Power Pack — 10 Searches</h3><div class="price-amount">$99.99 <span>valid 30 days</span></div><ul><li>10 subject searches</li><li>All fields per subject</li><li>Bulk upload via CSV</li><li>Priority queue processing</li><li>Search history dashboard</li></ul><a href="#search" class="price-btn">Purchase Pack</a></div>
+            <div class="price-card"><h3>Professional — Monthly</h3><div class="price-amount">$399 <span>per month</span></div><ul><li>Unlimited searches</li><li>REST API access</li><li>Bulk batch processing</li><li>Custom monitoring alerts</li><li>Dedicated support line</li></ul><a href="#contact" class="price-btn">Contact Sales</a></div>
+            <div class="price-card"><h3>Enterprise</h3><div class="price-amount">Custom</div><ul><li>White-label integration</li><li>Custom data connectors</li><li>SLA &amp; uptime guarantees</li><li>Compliance audit reports</li><li>Onboarding &amp; training</li></ul><a href="#contact" class="price-btn">Request Quote</a></div>
+        </div>
+    </div>
+</section>
+<section class="sources-section" id="sources">
+    <h2>Database Coverage</h2>
+    <p>Every public record source we query, listed for transparency.</p>
+    <div class="source-country"><h3>&#127464;&#127462; Canada — 12 Sources</h3><div class="source-list"><span class="src">Canada411</span><span class="src">Corporations Canada (Federal)</span><span class="src">Ontario Business Registry</span><span class="src api">CanLII <span class="api-tag">API</span></span><span class="src">Ontario Court Dates</span><span class="src">PPSA Ontario</span><span class="src">MPAC Property Assessment</span><span class="src api">Open Government Canada <span class="api-tag">API</span></span><span class="src">CPIC</span><span class="src">RegHub GEN III</span><span class="src">RegistriesDirect</span><span class="src api">Transport Canada Vehicle Specs <span class="api-tag">API</span></span></div></div>
+    <div class="source-country"><h3>&#127482;&#127480; United States — 12 Sources</h3><div class="source-list"><span class="src api">NHTSA VIN Decoder <span class="api-tag">API</span></span><span class="src api">NHTSA Safety Recalls <span class="api-tag">API</span></span><span class="src api">NHTSA Complaints <span class="api-tag">API</span></span><span class="src api">SEC EDGAR <span class="api-tag">API</span></span><span class="src">UCC Filings (Washington)</span><span class="src api">NumLookup <span class="api-tag">API</span></span><span class="src api">IPQS Reverse Phone <span class="api-tag">API</span></span><span class="src">Spy Dialer</span><span class="src">Whitepages</span><span class="src">FastPeopleSearch</span><span class="src">TruePeopleSearch</span><span class="src">City-Data</span></div></div>
+    <div class="source-country"><h3>&#127468;&#127463; United Kingdom — 5 Sources</h3><div class="source-list"><span class="src api">Companies House <span class="api-tag">API</span></span><span class="src">192.com</span><span class="src api">HM Land Registry <span class="api-tag">API</span></span><span class="src api">Find Case Law <span class="api-tag">API</span></span><span class="src">Insolvency Register</span></div></div>
+    <div class="source-country"><h3>&#127462;&#127482; Australia — 5 Sources</h3><div class="source-list"><span class="src">ASIC Registry</span><span class="src">White Pages AU</span><span class="src api">ABN Lookup <span class="api-tag">API</span></span><span class="src">Federal Court Lists</span><span class="src">CASA Aircraft Register</span></div></div>
+    <div class="source-country"><h3>&#127475;&#127487; New Zealand — 4 Sources</h3><div class="source-list"><span class="src api">NZ Companies Office <span class="api-tag">API</span></span><span class="src">White Pages NZ</span><span class="src">NZ PPSR</span><span class="src">NZ Law Society Register</span></div></div>
+    <div class="source-country"><h3>&#127760; Global — 9 Sources</h3><div class="source-list"><span class="src api">OpenCorporates <span class="api-tag">API</span></span><span class="src api">Hunter.io <span class="api-tag">API</span></span><span class="src api">Epieos <span class="api-tag">API</span></span><span class="src">DomainBigData</span><span class="src">LinkedIn Public</span><span class="src api">IPInfoDB <span class="api-tag">API</span></span><span class="src api">Social Searcher <span class="api-tag">API</span></span><span class="src api">OSINT Industries <span class="api-tag">API</span></span><span class="src api">Intelligence X <span class="api-tag">API</span></span></div></div>
+</section>
+<section class="contact-section" id="contact">
+    <h2>Contact Us</h2>
+    <p>Start with a single search or contact us for enterprise pricing and API access.</p>
+    <p style="margin-top: 1rem;">Email: <a href="mailto:info@skiptracing.ca">info@skiptracing.ca</a></p>
+</section>
+<footer>
+    <p><strong>SkipTracing.ca</strong></p>
+    <p>Recovery Logistics Systems Inc. (2621040 Ontario Inc.) &middot; Toronto, Ontario, Canada</p>
+    <p>All searches use publicly available information only. PIPEDA Section 7(1)(d) compliant.</p>
+    <div class="footer-legal">
+        <p>Patent pending. &copy; 2026 Recovery Logistics Systems Inc. All rights reserved.</p>
+        <p>SkipTracing.ca is not a consumer reporting agency as defined by the FCRA or equivalent provincial legislation. Information provided is sourced exclusively from publicly accessible databases and is not to be used for purposes governed by the FCRA, PIPEDA, or similar legislation without independent verification.</p>
+    </div>
+</footer>
+<script>
+    const API_BASE = 'https://5rv4djr6sfz5nk-3000.proxy.runpod.net';
+    const vinInput = document.getElementById('s-vin');
+    if (vinInput) { vinInput.addEventListener('input', (e) => { e.target.value = e.target.value.toUpperCase().replace(/[^A-HJ-NPR-Z0-9]/g, ''); }); }
+    const allFields = ['s-first','s-middle','s-last','s-dob','s-phone','s-email','s-address','s-city','s-province','s-postal','s-company','s-corpnum','s-vin','s-plate'];
+    function updateCounter() {
+        let filled = 0;
+        allFields.forEach(id => { const el = document.getElementById(id); if (el && el.value.trim()) filled++; });
+        const counter = document.getElementById('fields-counter');
+        if (filled === 0) counter.innerHTML = '<strong>0</strong> fields populated — fill at least one to search';
+        else if (filled <= 2) counter.innerHTML = '<strong>' + filled + '</strong> field' + (filled>1?'s':'') + ' populated — add more for better results';
+        else if (filled <= 5) counter.innerHTML = '<strong>' + filled + '</strong> fields populated — good coverage';
+        else counter.innerHTML = '<strong>' + filled + '</strong> fields populated — excellent, maximum cross-reference';
+    }
+    allFields.forEach(id => { const el = document.getElementById(id); if (el) el.addEventListener('input', updateCounter); });
+    function doSearch() {
+        const first = document.getElementById('s-first')?.value.trim() || '';
+        const middle = document.getElementById('s-middle')?.value.trim() || '';
+        const last = document.getElementById('s-last')?.value.trim() || '';
+        const phone = document.getElementById('s-phone')?.value.trim() || '';
+        const email = document.getElementById('s-email')?.value.trim() || '';
+        const address = document.getElementById('s-address')?.value.trim() || '';
+        const city = document.getElementById('s-city')?.value.trim() || '';
+        const province = document.getElementById('s-province')?.value || '';
+        const country = document.getElementById('s-country')?.value || 'CA';
+        const company = document.getElementById('s-company')?.value.trim() || '';
+        const vin = document.getElementById('s-vin')?.value.trim() || '';
+        const plate = document.getElementById('s-plate')?.value.trim() || '';
+        if (!first && !last && !phone && !email && !company && !vin && !address && !plate) { alert('Please fill in at least one field to search.'); return; }
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.style.display = 'block';
+        resultsDiv.innerHTML = '<div style="text-align:center;padding:2.5rem;color:#666;font-size:1.1rem;">Searching 47 databases across 5 countries...<br><small>Cross-referencing all provided fields</small></div>';
+        let searchType = 'individual';
+        if (vin && !first && !last && !phone && !email && !company) searchType = 'vin';
+        else if (phone && !first && !last && !vin && !company) searchType = 'phone';
+        else if (email && !first && !last && !vin && !company) searchType = 'email';
+        else if (company && !first && !last) searchType = 'corporation';
+        else if ((first || last) && company) searchType = 'both';
+        else if (address && !first && !last && !vin) searchType = 'address';
+        const fullName = [first, middle, last].filter(Boolean).join(' ');
+        const body = { first_name: first, last_name: last, full_name: fullName, city: city, province: province, country: country, phone: phone, email: email, company: company, address: address, vin: vin, search_type: searchType };
+        fetch(API_BASE + '/search', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body) })
+        .then(r => r.json())
+        .then(data => {
+            if (!data.results || data.results.length === 0) { resultsDiv.innerHTML = '<div style="padding:2rem;text-align:center;color:#666;">No results found. Try adding more fields or broadening your search.</div>'; return; }
+            let html = '<div style="padding:1rem;border-bottom:2px solid #AF3C43;margin-bottom:1rem;"><strong>' + data.total_results + ' results</strong> from ' + data.sources_checked + ' sources in ' + data.search_time_seconds + 's<span style="float:right;font-size:0.85rem;color:#666;">Subject: ' + (fullName || company || vin || phone || email) + '</span></div>';
+            data.results.forEach(function(r) {
+                var title = r.name || r.company || r.phone || r.email || 'Result';
+                var badge = r.api_available ? '<span class="api-badge">LIVE API</span>' : '';
+                html += '<div class="result-card"><div style="display:flex;justify-content:space-between;align-items:center;"><span class="result-title">' + title + '</span>' + badge + '</div>';
+                html += '<div class="result-meta">' + r.source + ' &middot; ' + r.source_country + ' &middot; Confidence: ' + (r.confidence*100).toFixed(0) + '%</div>';
+                if (r.address) html += '<div style="margin-top:0.4rem;">&#128205; ' + r.address + '</div>';
+                if (r.phone) html += '<div>&#128222; ' + r.phone + '</div>';
+                if (r.email) html += '<div>&#9993; ' + r.email + '</div>';
+                if (r.city || r.province) html += '<div>&#127968; ' + [r.city, r.province, r.country].filter(Boolean).join(', ') + '</div>';
+                if (r.details && Object.keys(r.details).length > 0) {
+                    html += '<div class="result-details">';
+                    Object.entries(r.details).forEach(function(entry) {
+                        var k = entry[0], v = entry[1];
+                        if (v && v !== '' && k !== 'search_query' && k !== 'note') {
+                            var label = k.replace(/_/g,' ').replace(/\b\w/g, function(c) { return c.toUpperCase(); });
+                            var val = typeof v === 'string' && v.length > 250 ? v.substring(0,250)+'...' : v;
+                            html += '<div><strong>' + label + ':</strong> ' + val + '</div>';
+                        }
+                    });
+                    html += '</div>';
+                }
+                if (r.source_url) html += '<div style="margin-top:0.4rem;"><a href="' + r.source_url + '" target="_blank" style="color:#335075;font-size:0.8rem;">View source &rarr;</a></div>';
+                html += '</div>';
+            });
+            resultsDiv.innerHTML = html;
+        })
+        .catch(function(err) { resultsDiv.innerHTML = '<div style="padding:2rem;text-align:center;color:#AF3C43;">Search error: ' + err.message + '. The API may be starting up — please try again.</div>'; });
+    }
+</script>
+</body>
+</html>
