@@ -653,17 +653,17 @@
         let url = '';
         switch(type) {
             case 'individual': {
-                const first = document.getElementById('first-name')?.value || '';
-                const last = document.getElementById('last-name')?.value || '';
-                const city = document.getElementById('city')?.value || '';
-                const prov = document.getElementById('province')?.value || '';
-                const country = document.getElementById('country')?.value || 'CA';
+                const first = document.getElementById('ind-first')?.value || '';
+                const last = document.getElementById('ind-last')?.value || '';
+                const city = document.getElementById('ind-city')?.value || '';
+                const prov = document.getElementById('ind-province')?.value || '';
+                const country = document.getElementById('ind-country')?.value || 'CA';
                 if (!first && !last) { alert('Please enter a name.'); resultsDiv.style.display='none'; return; }
                 url = `${API_BASE}/search/quick?name=${encodeURIComponent((first+' '+last).trim())}&city=${encodeURIComponent(city)}&province=${encodeURIComponent(prov)}&country=${encodeURIComponent(country)}`;
                 break;
             }
             case 'corporation': {
-                const company = document.getElementById('company-name')?.value || '';
+                const company = document.getElementById('corp-name')?.value || '';
                 const country = document.getElementById('corp-country')?.value || 'CA';
                 if (!company) { alert('Please enter a company name.'); resultsDiv.style.display='none'; return; }
                 url = `${API_BASE}/search/company/${encodeURIComponent(company)}?country=${encodeURIComponent(country)}`;
@@ -688,7 +688,7 @@
                 break;
             }
             case 'address': {
-                const addr = document.getElementById('street-address')?.value || '';
+                const addr = document.getElementById('address-text')?.value || '';
                 if (!addr) { alert('Please enter an address.'); resultsDiv.style.display='none'; return; }
                 url = `${API_BASE}/search?address=${encodeURIComponent(addr)}&search_type=address`;
                 break;
