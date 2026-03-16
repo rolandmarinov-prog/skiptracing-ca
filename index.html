@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SkipTracing.ca — Public Record Search | Recovery Logistics Systems Inc.</title>
-    <meta name="description" content="AI-powered skip tracing across 47+ public databases. Canada, USA, UK, Australia, NZ. PIPEDA compliant. VIN, reverse phone, corporate registry.">
+    <title>SkipTracing.ca — Public Record Search</title>
+    <meta name="description" content="AI-powered skip tracing across 76+ public databases. Canada, USA, UK, Australia, NZ and worldwide. PIPEDA compliant. VIN, reverse phone, corporate registry.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -28,8 +28,6 @@
             background: var(--bg); color: var(--text);
             line-height: 1.6; font-size: 16px;
         }
-
-        /* GOV-STYLE TOP BAR */
         .gov-bar {
             background: var(--blue); color: #fff; padding: 0.4rem 2rem;
             font-size: 0.75rem; display: flex; justify-content: space-between;
@@ -37,8 +35,6 @@
         }
         .gov-bar a { color: #ccc; text-decoration: none; margin-left: 1.5rem; }
         .gov-bar a:hover { color: #fff; text-decoration: underline; }
-
-        /* HEADER */
         header {
             background: #fff; border-bottom: 3px solid var(--red);
             padding: 1rem 2rem; display: flex; justify-content: space-between;
@@ -60,8 +56,6 @@
             text-decoration: none; margin-left: 2rem;
         }
         .btn-signin:hover { background: var(--light-blue); }
-
-        /* HERO */
         .hero {
             background: var(--surface); border-bottom: 1px solid var(--border-light);
             padding: 3rem 2rem; text-align: center;
@@ -79,17 +73,11 @@
             display: flex; align-items: center; gap: 0.4rem;
             font-size: 0.85rem; color: var(--text); font-weight: 500;
         }
-        .comp-badge .dot {
-            width: 8px; height: 8px; border-radius: 50%; display: inline-block;
-        }
+        .comp-badge .dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
         .dot-red { background: var(--red); }
         .dot-green { background: var(--green); }
         .dot-blue { background: var(--blue); }
-
-        /* SEARCH SECTION */
-        .search-section {
-            max-width: 860px; margin: 2.5rem auto; padding: 0 2rem;
-        }
+        .search-section { max-width: 860px; margin: 2.5rem auto; padding: 0 2rem; }
         .tabs {
             display: flex; border: 1px solid var(--border); border-bottom: none;
             border-radius: 4px 4px 0 0; overflow-x: auto; background: var(--surface);
@@ -106,14 +94,12 @@
             background: #fff; color: var(--black); font-weight: 600;
             border-bottom: 3px solid var(--red); margin-bottom: -1px;
         }
-
         .search-box {
             border: 1px solid var(--border); border-radius: 0 0 4px 4px;
             padding: 1.5rem; background: #fff;
         }
         .search-panel { display: none; }
         .search-panel.active { display: block; }
-
         .form-row { display: flex; gap: 0.75rem; margin-bottom: 0.75rem; flex-wrap: wrap; }
         .form-row label {
             display: block; font-size: 0.8rem; font-weight: 600; color: var(--text);
@@ -123,8 +109,7 @@
         .field input, .field select {
             width: 100%; padding: 0.65rem 0.75rem;
             border: 1px solid var(--border); border-radius: 4px;
-            font-size: 0.95rem; font-family: inherit; color: var(--text);
-            background: #fff;
+            font-size: 0.95rem; font-family: inherit; color: var(--text); background: #fff;
         }
         .field input:focus, .field select:focus {
             outline: none; border-color: var(--blue);
@@ -136,10 +121,16 @@
             letter-spacing: 2.5px; text-transform: uppercase;
             font-size: 1.05rem !important; font-weight: 600;
         }
-        .field-hint {
-            font-size: 0.75rem; color: var(--text-light); margin-top: 0.25rem;
+        .field-hint { font-size: 0.75rem; color: var(--text-light); margin-top: 0.25rem; }
+        .section-label {
+            font-size: 0.75rem; font-weight: 700; color: var(--blue);
+            text-transform: uppercase; letter-spacing: 0.8px;
+            margin-bottom: 0.6rem; margin-top: 0.5rem;
         }
-
+        .section-divider {
+            border-top: 1px solid var(--border-light);
+            margin: 1rem 0;
+        }
         .search-btn {
             width: 100%; padding: 0.8rem; margin-top: 0.5rem;
             background: var(--red); color: #fff; border: none; border-radius: 4px;
@@ -147,23 +138,18 @@
             font-family: inherit; transition: background 0.2s;
         }
         .search-btn:hover { background: var(--dark-red); }
-
         .search-footer {
             display: flex; justify-content: space-between; align-items: center;
             margin-top: 1rem; padding-top: 0.75rem; border-top: 1px solid var(--border-light);
             font-size: 0.8rem; color: var(--text-light);
         }
         .search-footer strong { color: var(--text); }
-
-        /* INFO BAR */
         .info-bar {
             background: #EBF5FB; border: 1px solid #AED6F1; border-radius: 4px;
             padding: 0.8rem 1rem; margin-bottom: 1rem; font-size: 0.85rem;
             color: var(--blue); display: flex; align-items: flex-start; gap: 0.5rem;
         }
         .info-bar .info-icon { font-size: 1.1rem; flex-shrink: 0; }
-
-        /* PRICING */
         .pricing-section {
             padding: 3.5rem 2rem; border-top: 1px solid var(--border-light);
             background: var(--surface);
@@ -175,8 +161,7 @@
         }
         .pricing-inner > p { text-align: center; color: var(--text-light); margin-bottom: 2.5rem; }
         .pricing-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 1.2rem;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1.2rem;
         }
         .price-card {
             background: #fff; border: 1px solid var(--border);
@@ -196,9 +181,7 @@
             padding: 0.3rem 0; font-size: 0.85rem; color: var(--text);
             padding-left: 1.2rem; position: relative;
         }
-        .price-card li::before {
-            content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700;
-        }
+        .price-card li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
         .price-btn {
             display: block; width: 100%; padding: 0.65rem; text-align: center;
             background: var(--blue); color: #fff; border: none; border-radius: 4px;
@@ -208,27 +191,19 @@
         .price-btn:hover { background: var(--light-blue); }
         .price-card.featured .price-btn { background: var(--red); }
         .price-card.featured .price-btn:hover { background: var(--dark-red); }
-
-        /* SOURCES */
-        .sources-section {
-            padding: 3rem 2rem; max-width: 1050px; margin: 0 auto;
-        }
+        .sources-section { padding: 3rem 2rem; max-width: 1050px; margin: 0 auto; }
         .sources-section h2 {
             font-size: 1.6rem; font-weight: 700; color: var(--black);
             margin-bottom: 0.3rem; text-align: center;
         }
         .sources-section > p { text-align: center; color: var(--text-light); margin-bottom: 2rem; font-size: 0.95rem; }
-
         .source-country { margin-bottom: 1.5rem; }
         .source-country h3 {
             font-size: 0.9rem; font-weight: 700; color: var(--blue);
             text-transform: uppercase; letter-spacing: 0.5px;
-            border-bottom: 2px solid var(--border-light); padding-bottom: 0.4rem;
-            margin-bottom: 0.6rem;
+            border-bottom: 2px solid var(--border-light); padding-bottom: 0.4rem; margin-bottom: 0.6rem;
         }
-        .source-list {
-            display: flex; flex-wrap: wrap; gap: 0.4rem;
-        }
+        .source-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
         .src {
             background: var(--surface); border: 1px solid var(--border-light);
             border-radius: 3px; padding: 0.35rem 0.7rem; font-size: 0.78rem;
@@ -239,27 +214,41 @@
             font-size: 0.6rem; background: var(--blue); color: #fff;
             padding: 0.05rem 0.3rem; border-radius: 2px; font-weight: 700;
         }
-
-        /* CONTACT */
         .contact-section {
             text-align: center; padding: 3rem 2rem;
             background: var(--surface); border-top: 1px solid var(--border-light);
         }
         .contact-section h2 { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--black); }
-        .contact-section p { color: var(--text-light); font-size: 0.95rem; }
-        .contact-section a { color: var(--blue); font-weight: 600; }
-
-        /* FOOTER */
+        .contact-section p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 1.5rem; }
+        .contact-form {
+            max-width: 500px; margin: 0 auto; text-align: left;
+        }
+        .contact-form input, .contact-form textarea, .contact-form select {
+            width: 100%; padding: 0.65rem 0.75rem; margin-bottom: 0.75rem;
+            border: 1px solid var(--border); border-radius: 4px;
+            font-size: 0.95rem; font-family: inherit; color: var(--text); background: #fff;
+        }
+        .contact-form textarea { height: 120px; resize: vertical; }
+        .contact-form input:focus, .contact-form textarea:focus {
+            outline: none; border-color: var(--blue);
+            box-shadow: 0 0 0 2px rgba(38,55,74,0.15);
+        }
+        .contact-submit {
+            width: 100%; padding: 0.8rem; background: var(--red); color: #fff;
+            border: none; border-radius: 4px; font-size: 1rem; font-weight: 600;
+            cursor: pointer; font-family: inherit;
+        }
+        .contact-submit:hover { background: var(--dark-red); }
+        .contact-note { font-size: 0.8rem; color: var(--text-light); margin-top: 0.5rem; text-align: center; }
         footer {
             background: var(--blue); color: #ccc; padding: 2rem;
             text-align: center; font-size: 0.8rem; line-height: 1.8;
         }
         footer strong { color: #fff; }
-        footer a { color: #aaa; text-decoration: none; }
-        footer a:hover { color: #fff; text-decoration: underline; }
-        .footer-legal { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.15);
-            font-size: 0.75rem; color: #999; }
-
+        .footer-legal {
+            margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.15);
+            font-size: 0.75rem; color: #999;
+        }
         @media (max-width: 768px) {
             .gov-bar { flex-direction: column; text-align: center; gap: 0.3rem; }
             header { flex-direction: column; gap: 1rem; text-align: center; }
@@ -275,9 +264,8 @@
 </head>
 <body>
 
-<!-- GOV TOP BAR -->
 <div class="gov-bar">
-    <span>Recovery Logistics Systems Inc. · Registered Canadian Business (2621040 Ontario Inc.)</span>
+    <span>SkipTracing.ca · Public Record Intelligence · PIPEDA Compliant</span>
     <div>
         <a href="#sources">Sources</a>
         <a href="#pricing">Pricing</a>
@@ -285,7 +273,6 @@
     </div>
 </div>
 
-<!-- HEADER -->
 <header>
     <div class="header-left">
         <div class="logo">SkipTracing<span>.ca</span></div>
@@ -300,40 +287,31 @@
     </nav>
 </header>
 
-<!-- HERO -->
 <section class="hero">
     <div class="hero-inner">
         <h1>Find anyone in Canada.<br>And across the border.</h1>
-        <p>AI-powered public record search across 47 databases in 5 countries. Individual, corporate, vehicle, phone, and email intelligence. Results in seconds.</p>
+        <p>AI-powered public record search across 114 public databases. Individual, corporate, vehicle, phone, and email intelligence. Results in seconds.</p>
         <div class="compliance-badges">
             <div class="comp-badge"><span class="dot dot-red"></span> PIPEDA Compliant</div>
             <div class="comp-badge"><span class="dot dot-green"></span> Public Records Only</div>
-            <div class="comp-badge"><span class="dot dot-blue"></span> Five Eyes Coverage</div>
+            
             <div class="comp-badge"><span class="dot dot-green"></span> 21 Live API Connections</div>
         </div>
     </div>
 </section>
 
-<!-- SEARCH -->
 <section class="search-section" id="search">
     <div class="tabs">
-        <button class="tab active" data-tab="individual">Individual</button>
-        <button class="tab" data-tab="corporation">Corporation</button>
-        <button class="tab" data-tab="phone">Reverse Phone</button>
-        <button class="tab" data-tab="vin">VIN Lookup</button>
-        <button class="tab" data-tab="email">Email</button>
-        <button class="tab" data-tab="address">Address</button>
+        <button class="tab active" data-tab="search">Search</button>
     </div>
     <div class="search-box">
+        <div class="search-panel active" id="panel-search">
 
-        <!-- Individual -->
-        <div class="search-panel active" id="panel-individual">
-            <div class="info-bar">
-                <span class="info-icon">ℹ️</span>
-                <span>Search queries Canadian white pages, court records, property assessment, PPSA liens, and professional registries. Cross-border results included for US, UK, AU, NZ.</span>
-            </div>
+            <!-- PERSON -->
+            <div class="section-label">Person</div>
             <div class="form-row">
                 <div class="field"><label>First Name</label><input type="text" id="ind-first" placeholder="John"></div>
+                <div class="field"><label>Middle Name (optional)</label><input type="text" id="ind-middle" placeholder="Michael"></div>
                 <div class="field"><label>Last Name</label><input type="text" id="ind-last" placeholder="Smith"></div>
             </div>
             <div class="form-row">
@@ -359,106 +337,77 @@
                         <option value="UK">United Kingdom</option>
                         <option value="AU">Australia</option>
                         <option value="NZ">New Zealand</option>
+                        <option value="WORLD">Worldwide</option>
                     </select>
                 </div>
             </div>
-            <button class="search-btn" onclick="window.open('https://pay.pay.skiptracing.ca/skip-trace', '_blank')")>Search Individual · $19.99</button>
-        </div>
-
-        <!-- Corporation -->
-        <div class="search-panel" id="panel-corporation">
-            <div class="info-bar">
-                <span class="info-icon">ℹ️</span>
-                <span>Searches federal and provincial business registries, OpenCorporates (200M+ companies), SEC EDGAR filings, Companies House UK, ASIC Australia, and NZ Companies Office.</span>
-            </div>
             <div class="form-row">
-                <div class="field" style="flex:2"><label>Company or Business Name</label><input type="text" id="corp-name" placeholder="Recovery Logistics Systems Inc."></div>
+                <div class="field"><label>Phone (optional)</label><input type="tel" id="ind-phone" placeholder="(416) 555-1234"></div>
+                <div class="field"><label>Email (optional)</label><input type="email" id="ind-email" placeholder="name@example.com"></div>
+                <div class="field"><label>Street Address (optional)</label><input type="text" id="ind-address" placeholder="123 Main Street, Toronto, ON"></div>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- COMPANY -->
+            <div class="section-label">Company / Corporation (optional)</div>
+            <div class="form-row">
+                <div class="field" style="flex:2"><label>Company or Business Name</label><input type="text" id="corp-name" placeholder="Acme Corp Inc."></div>
                 <div class="field">
                     <label>Jurisdiction</label>
                     <select id="corp-country">
-                        <option value="CA">Canada</option>
+                        <option value="CA">Canada — All Provinces</option>
                         <option value="US">United States</option>
                         <option value="UK">United Kingdom</option>
                         <option value="AU">Australia</option>
                         <option value="NZ">New Zealand</option>
-                        <option value="">All Jurisdictions</option>
+                        <option value="">All Jurisdictions (World)</option>
                     </select>
                 </div>
             </div>
-            <button class="search-btn" onclick="doSearch('corporation')">Search Corporation · $19.99</button>
-        </div>
 
-        <!-- Reverse Phone -->
-        <div class="search-panel" id="panel-phone">
-            <div class="info-bar">
-                <span class="info-icon">ℹ️</span>
-                <span>Reverse lookup against Canada411, NumLookup, IPQS carrier data, and Spy Dialer. Returns owner name, address, carrier, line type, and spam risk score.</span>
-            </div>
-            <div class="form-row">
-                <div class="field"><label>Phone Number</label><input type="tel" id="phone-number" placeholder="(416) 555-1234"></div>
-            </div>
-            <button class="search-btn" onclick="doSearch('phone')">Reverse Phone Lookup · $9.99</button>
-        </div>
+            <div class="section-divider"></div>
 
-        <!-- VIN -->
-        <div class="search-panel" id="panel-vin">
-            <div class="info-bar">
-                <span class="info-icon">🚗</span>
-                <span>Decode any North American vehicle. Returns make, model, year, engine, transmission, plant of manufacture, body type, and 130+ specifications. Includes active safety recalls and consumer complaints. Powered by NHTSA &amp; Transport Canada.</span>
-            </div>
+            <!-- ASSET -->
+            <div class="section-label">Vehicle / Vessel / Asset (optional)</div>
             <div class="form-row">
                 <div class="field">
-                    <label>Vehicle Identification Number (VIN)</label>
-                    <input type="text" id="vin-number" class="vin-input" placeholder="1HGCM82633A004352" maxlength="17" autocomplete="off">
-                    <div class="field-hint">17-character VIN · Found on dashboard (driver side) or driver door jamb</div>
+                    <label>VIN / Hull Number / Serial #</label>
+                    <input type="text" id="vin-number" class="vin-input" placeholder="VIN · Hull # · Serial #" autocomplete="off">
+                    <div class="field-hint">Vehicle VIN (17 chars) · Boat Hull # · Equipment Serial # · Bicycle Serial #</div>
                 </div>
-            </div>
-            <button class="search-btn" onclick="doSearch('vin')">Decode VIN · $9.99</button>
-        </div>
-
-        <!-- Email -->
-        <div class="search-panel" id="panel-email">
-            <div class="info-bar">
-                <span class="info-icon">ℹ️</span>
-                <span>Email OSINT lookup via Hunter.io, Epieos, and OSINT Industries. Finds linked accounts, social profiles, domain ownership, and breach exposure.</span>
-            </div>
-            <div class="form-row">
-                <div class="field"><label>Email Address</label><input type="email" id="email-address" placeholder="name@example.com"></div>
-            </div>
-            <button class="search-btn" onclick="doSearch('email')">Email OSINT Lookup · $9.99</button>
-        </div>
-
-        <!-- Address -->
-        <div class="search-panel" id="panel-address">
-            <div class="info-bar">
-                <span class="info-icon">ℹ️</span>
-                <span>Reverse address search against property assessment records (MPAC Ontario), City-Data demographics, and HM Land Registry (UK). Returns property details, neighborhood data, and registered owners where available.</span>
-            </div>
-            <div class="form-row">
-                <div class="field" style="flex:2"><label>Street Address</label><input type="text" id="address-text" placeholder="123 Main Street, Toronto, ON"></div>
                 <div class="field">
-                    <label>Country</label>
-                    <select id="addr-country">
-                        <option value="CA">Canada</option>
-                        <option value="US">United States</option>
-                        <option value="UK">United Kingdom</option>
+                    <label>Asset Type</label>
+                    <select id="asset-type">
+                        <option value="vehicle">Vehicle (Auto / Truck / Motorcycle)</option>
+                        <option value="boat">Boat / Vessel</option>
+                        <option value="motor">Boat Motor</option>
+                        <option value="bicycle">Bicycle</option>
+                        <option value="property">Other Property</option>
                     </select>
                 </div>
+                <div class="field">
+                    <label>License Plate (optional)</label>
+                    <input type="text" id="plate-number" placeholder="ABCD 123 · Province">
+                </div>
             </div>
-            <button class="search-btn" onclick="doSearch('address')">Reverse Address · $9.99</button>
+            <div class="info-bar" style="margin-top:0.5rem;">
+                <span class="info-icon">ℹ️</span>
+                <span>Asset searches include CPIC (CA), NHTSA (US), DVLA (UK), NEVDIS (AU), NZ Transport Agency, Interpol Stolen Motor Vehicles (7.8M+ records worldwide), Canadian Vessel Registry (Hull), HPI Check (UK), PPSR (AU), Europol iARMIS (EU), and all provincial registries.</span>
+            </div>
+
+            <button class="search-btn" onclick="window.open('https://pay.pay.skiptracing.ca/skip-trace', '_blank')">Run Search · $19.99</button>
         </div>
 
-        <div class="search-footer">
-            <span>Querying <strong>47 databases</strong> across <strong>5 countries</strong></span>
+                <div class="search-footer">
+            <span>Querying <strong>114 databases</strong> worldwide</span>
             <span><strong>21</strong> live API connections · Updated in real-time</span>
         </div>
 
-        <!-- RESULTS -->
         <div id="results" style="display:none;margin-top:1.5rem;max-height:600px;overflow-y:auto;"></div>
     </div>
 </section>
 
-<!-- PRICING -->
 <section class="pricing-section" id="pricing">
     <div class="pricing-inner">
         <h2>Service Fees</h2>
@@ -468,9 +417,8 @@
                 <h3>Single Search</h3>
                 <div class="price-amount">$19.99 <span>per search</span></div>
                 <ul>
-                    <li>One person, company, or VIN</li>
-                    <li>All 47 sources queried</li>
-                    <li>Five Eyes cross-border</li>
+                    <li>One subject — person, company, or VIN</li>
+                    <li>All 76 sources queried</li>
                     <li>PDF report download</li>
                     <li>Results in under 30 seconds</li>
                 </ul>
@@ -480,23 +428,22 @@
                 <h3>Power Pack — 10 Searches</h3>
                 <div class="price-amount">$99.99 <span>valid 30 days</span></div>
                 <ul>
-                    <li>10 searches, any type</li>
+                    <li>Everything in Single</li>
+                    <li>10 searches — any type</li>
                     <li>VIN + Phone + Email + Person</li>
                     <li>Bulk upload via CSV</li>
-                    <li>Priority queue processing</li>
-                    <li>Search history dashboard</li>
                 </ul>
-                <a href="#search" class="price-btn">Purchase Pack</a>
+                <a href="#contact" class="price-btn">Purchase Pack</a>
             </div>
             <div class="price-card">
                 <h3>Professional — Monthly</h3>
-                <div class="price-amount">$399 <span>per month</span></div>
+                <div class="price-amount">$399.99 <span>per month</span></div>
                 <ul>
-                    <li>Unlimited searches</li>
+                    <li>Everything in Power Pack</li>
+                    <li>100 searches per month</li>
                     <li>REST API access</li>
-                    <li>Bulk batch processing</li>
-                    <li>Custom monitoring alerts</li>
-                    <li>Dedicated support line</li>
+                    <li>Priority queue processing</li>
+                    <li>Search history dashboard</li>
                 </ul>
                 <a href="#contact" class="price-btn">Contact Sales</a>
             </div>
@@ -504,11 +451,11 @@
                 <h3>Enterprise</h3>
                 <div class="price-amount">Custom</div>
                 <ul>
+                    <li>Everything in Professional</li>
+                    <li>Unlimited searches</li>
                     <li>White-label integration</li>
                     <li>Custom data connectors</li>
-                    <li>SLA &amp; uptime guarantees</li>
-                    <li>Compliance audit reports</li>
-                    <li>Onboarding &amp; training</li>
+                    <li>Dedicated support line</li>
                 </ul>
                 <a href="#contact" class="price-btn">Request Quote</a>
             </div>
@@ -516,28 +463,40 @@
     </div>
 </section>
 
-<!-- SOURCES -->
 <section class="sources-section" id="sources">
     <h2>Database Coverage</h2>
     <p>Every public record source we query, listed for transparency.</p>
 
     <div class="source-country">
-        <h3>🇨🇦 Canada — 12 Sources</h3>
+        <h3>🇨🇦 Canada — 24 Sources</h3>
         <div class="source-list">
             <span class="src">Canada411</span>
             <span class="src">Corporations Canada (Federal)</span>
-            <span class="src">Ontario Business Registry</span>
             <span class="src api">CanLII <span class="api-tag">API</span></span>
+            <span class="src">Ontario Business Registry</span>
+            <span class="src">BC Registry (Corporations)</span>
+            <span class="src">Alberta Corporate Registry</span>
+            <span class="src">Quebec RIDQ (REQ)</span>
+            <span class="src">Manitoba Companies Office</span>
+            <span class="src">Saskatchewan Corporate Registry</span>
+            <span class="src">Nova Scotia Registry of Joint Stock</span>
+            <span class="src">New Brunswick Corporate Registry</span>
+            <span class="src">Newfoundland Registry of Companies</span>
+            <span class="src">PEI Corporate Registry</span>
+            <span class="src">Northwest Territories Corporate Registry</span>
+            <span class="src">Nunavut Corporate Registry</span>
+            <span class="src">Yukon Corporate Affairs</span>
             <span class="src">Ontario Court Dates</span>
             <span class="src">PPSA Ontario</span>
             <span class="src">MPAC Property Assessment</span>
             <span class="src api">Open Government Canada <span class="api-tag">API</span></span>
-            <span class="src">CPIC</span>
+            
             <span class="src">RegHub GEN III</span>
             <span class="src">RegistriesDirect</span>
             <span class="src api">Transport Canada Vehicle Specs <span class="api-tag">API</span></span>
         </div>
     </div>
+
     <div class="source-country">
         <h3>🇺🇸 United States — 12 Sources</h3>
         <div class="source-list">
@@ -555,6 +514,7 @@
             <span class="src">City-Data</span>
         </div>
     </div>
+
     <div class="source-country">
         <h3>🇬🇧 United Kingdom — 5 Sources</h3>
         <div class="source-list">
@@ -565,6 +525,7 @@
             <span class="src">Insolvency Register</span>
         </div>
     </div>
+
     <div class="source-country">
         <h3>🇦🇺 Australia — 5 Sources</h3>
         <div class="source-list">
@@ -575,6 +536,7 @@
             <span class="src">CASA Aircraft Register</span>
         </div>
     </div>
+
     <div class="source-country">
         <h3>🇳🇿 New Zealand — 4 Sources</h3>
         <div class="source-list">
@@ -584,6 +546,69 @@
             <span class="src">NZ Law Society Register</span>
         </div>
     </div>
+
+    <div class="source-country">
+        <h3>🚗 Stolen Asset Registries — World — 10 Sources</h3>
+        <div class="source-list">
+            <span class="src api">Interpol Stolen Motor Vehicles <span class="api-tag">API</span></span>
+            <span class="src">CPIC Stolen Registry (CA)</span>
+            <span class="src api">NHTSA (US) <span class="api-tag">API</span></span>
+            <span class="src">DVLA Stolen Vehicles (UK)</span>
+            <span class="src api">NEVDIS (AU) <span class="api-tag">API</span></span>
+            <span class="src">NZ Transport Agency</span>
+            <span class="src">HPI Check (UK)</span>
+            <span class="src api">PPSR Australia <span class="api-tag">API</span></span>
+            <span class="src">Europol iARMIS (EU)</span>
+            <span class="src api">Canadian Vessel Registry <span class="api-tag">API</span></span>
+        </div>
+    </div>
+
+    <div class="source-country">
+        <h3>🇷🇺 RuNet / Eastern European — 6 Sources</h3>
+        <div class="source-list">
+            <span class="src">VKontakte (VK) Public</span>
+            <span class="src">Odnoklassniki (OK.ru) Public</span>
+            <span class="src">Mail.ru People Search</span>
+            <span class="src">2GIS Business Directory</span>
+            <span class="src">Russiancanada.com</span>
+            <span class="src">Linkedin RU Public</span>
+        </div>
+    </div>
+
+    <div class="source-country">
+        <h3>🇨🇳 Chinese Internet — 6 Sources</h3>
+        <div class="source-list">
+            <span class="src">Weibo Public Search</span>
+            <span class="src">Baidu People Search</span>
+            <span class="src">Zhihu Public Profiles</span>
+            <span class="src">Douyin Public</span>
+            <span class="src">Chinese Yellow Pages Canada</span>
+            <span class="src">SinoVision Directory</span>
+        </div>
+    </div>
+
+    <div class="source-country">
+        <h3>🇮🇳 Indian Subcontinent — 6 Sources</h3>
+        <div class="source-list">
+            <span class="src">Truecaller Public</span>
+            <span class="src">JustDial Canada</span>
+            <span class="src">Sulekha Canada</span>
+            <span class="src">IndiaCanada.ca Directory</span>
+            <span class="src">Shaadi.com Public Profiles</span>
+            <span class="src">NRI Directory Canada</span>
+        </div>
+    </div>
+
+    <div class="source-country">
+        <h3>🇵🇰 Pakistani / South Asian — 4 Sources</h3>
+        <div class="source-list">
+            <span class="src">Paklinks Canada</span>
+            <span class="src">UrduPoint Directory</span>
+            <span class="src">PakistaniCanadian.ca</span>
+            <span class="src">Zameen.com Public</span>
+        </div>
+    </div>
+
     <div class="source-country">
         <h3>🌐 Global — 9 Sources</h3>
         <div class="source-list">
@@ -600,36 +625,47 @@
     </div>
 </section>
 
-<!-- CONTACT -->
 <section class="contact-section" id="contact">
     <h2>Contact Us</h2>
-    <p>Start with a single search or contact us for enterprise pricing and API access.</p>
-    <p style="margin-top: 1rem;">Email: <a href="/cdn-cgi/l/email-protection#3b52555d547b4850524b4f495a5852555c15585a"><span class="__cf_email__" data-cfemail="2841464e47685b4341585c5a494b41464f064b49">[email&#160;protected]</span></a></p>
+    <p>Leave a message and we will respond.</p>
+    <div class="contact-form">
+        <input type="text" id="contact-name" placeholder="Your name">
+        <input type="text" id="contact-subject" placeholder="Subject — e.g. Enterprise pricing, API access, General inquiry">
+        <textarea id="contact-message" placeholder="Your message..."></textarea>
+        <select id="contact-type">
+            <option value="">— Inquiry type —</option>
+            <option value="single">Single search inquiry</option>
+            <option value="enterprise">Enterprise / API pricing</option>
+            <option value="legal">Legal / compliance question</option>
+            <option value="other">Other</option>
+        </select>
+        <button class="contact-submit" onclick="submitContact()">Send Message</button>
+        <p class="contact-note">We review all messages and respond within 1 business day.</p>
+        <div id="contact-result" style="margin-top:1rem;"></div>
+    </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
     <p><strong>SkipTracing.ca</strong></p>
-    <p>Recovery Logistics Systems Inc. (2621040 Ontario Inc.) · Toronto, Ontario, Canada</p>
+    <p>Toronto, Ontario, Canada</p>
     <p>All searches use publicly available information only. PIPEDA Section 7(1)(d) compliant.</p>
     <div class="footer-legal">
-        <p>Patent pending. © 2026 Recovery Logistics Systems Inc. All rights reserved.</p>
+        <p>Patent pending. © 2026 SkipTracing.ca. All rights reserved.</p>
         <p>SkipTracing.ca is not a consumer reporting agency as defined by the FCRA or equivalent provincial legislation. Information provided is sourced exclusively from publicly accessible databases and is not to be used for purposes governed by the FCRA, PIPEDA, or similar legislation without independent verification.</p>
     </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    // Tab switching
+<script>
     document.querySelectorAll('.tab').forEach(tab => {
         tab.addEventListener('click', () => {
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.search-panel').forEach(p => p.classList.remove('active'));
             tab.classList.add('active');
-            document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+            const panel = document.getElementById('panel-' + tab.dataset.tab);
+            if (panel) panel.classList.add('active');
         });
     });
 
-    // VIN auto-format (uppercase, strip invalid chars, exclude I/O/Q)
     const vinInput = document.getElementById('vin-number');
     if (vinInput) {
         vinInput.addEventListener('input', (e) => {
@@ -637,104 +673,21 @@
         });
     }
 
-    // API_BASE — set this to your RunPod endpoint
     window.API_BASE = 'https://api.skiptracing.ca';
 
-    function doSearch(type) {
-        if (!API_BASE) {
-            alert('Search service is starting up. Please try again in a moment.');
+    function submitContact() {
+        const name = document.getElementById('contact-name').value.trim();
+        const subject = document.getElementById('contact-subject').value.trim();
+        const message = document.getElementById('contact-message').value.trim();
+        const result = document.getElementById('contact-result');
+        if (!name || !message) {
+            result.innerHTML = '<p style="color:#AF3C43;">Please enter your name and message.</p>';
             return;
         }
-
-        const resultsDiv = document.getElementById('results');
-        resultsDiv.innerHTML = '<div style="text-align:center;padding:2rem;color:#666;">Searching 47 databases across 5 countries...</div>';
-        resultsDiv.style.display = 'block';
-
-        let url = '';
-        switch(type) {
-            case 'individual': {
-                const first = document.getElementById('ind-first')?.value || '';
-                const last = document.getElementById('ind-last')?.value || '';
-                const city = document.getElementById('ind-city')?.value || '';
-                const prov = document.getElementById('ind-province')?.value || '';
-                const country = document.getElementById('ind-country')?.value || 'CA';
-                if (!first && !last) { alert('Please enter a name.'); resultsDiv.style.display='none'; return; }
-                url = `${API_BASE}/search/quick?name=${encodeURIComponent((first+' '+last).trim())}&city=${encodeURIComponent(city)}&province=${encodeURIComponent(prov)}&country=${encodeURIComponent(country)}`;
-                break;
-            }
-            case 'corporation': {
-                const company = document.getElementById('corp-name')?.value || '';
-                const country = document.getElementById('corp-country')?.value || 'CA';
-                if (!company) { alert('Please enter a company name.'); resultsDiv.style.display='none'; return; }
-                url = `${API_BASE}/search/company/${encodeURIComponent(company)}?country=${encodeURIComponent(country)}`;
-                break;
-            }
-            case 'phone': {
-                const phone = document.getElementById('phone-number')?.value || '';
-                if (!phone) { alert('Please enter a phone number.'); resultsDiv.style.display='none'; return; }
-                url = `${API_BASE}/search/phone/${encodeURIComponent(phone)}`;
-                break;
-            }
-            case 'vin': {
-                const vin = document.getElementById('vin-number')?.value || '';
-                if (!vin || vin.length < 11) { alert('Please enter a valid VIN (11-17 characters).'); resultsDiv.style.display='none'; return; }
-                url = `${API_BASE}/search/vin/${encodeURIComponent(vin)}`;
-                break;
-            }
-            case 'email': {
-                const email = document.getElementById('email-address')?.value || '';
-                if (!email) { alert('Please enter an email address.'); resultsDiv.style.display='none'; return; }
-                url = `${API_BASE}/search/email/${encodeURIComponent(email)}`;
-                break;
-            }
-            case 'address': {
-                const addr = document.getElementById('address-text')?.value || '';
-                if (!addr) { alert('Please enter an address.'); resultsDiv.style.display='none'; return; }
-                url = `${API_BASE}/search?address=${encodeURIComponent(addr)}&search_type=address`;
-                break;
-            }
-        }
-
-        fetch(url)
-            .then(r => r.json())
-            .then(data => {
-                if (!data.results || data.results.length === 0) {
-                    resultsDiv.innerHTML = '<div style="padding:2rem;text-align:center;color:#666;">No results found. Try broadening your search.</div>';
-                    return;
-                }
-                let html = `<div style="padding:1rem;border-bottom:2px solid #AF3C43;margin-bottom:1rem;">
-                    <strong>${data.total_results} results</strong> from ${data.sources_checked} sources in ${data.search_time_seconds}s</div>`;
-                
-                data.results.forEach(r => {
-                    const title = r.name || r.company || r.phone || 'Result';
-                    const badge = r.api_available ? '<span style="background:#1B6C35;color:#fff;padding:0.15rem 0.5rem;border-radius:3px;font-size:0.7rem;margin-left:0.5rem;">LIVE API</span>' : '';
-                    html += `<div style="border:1px solid #e0e0e0;border-left:3px solid #26374A;padding:1rem;margin-bottom:0.75rem;background:#fafafa;">
-                        <div style="display:flex;justify-content:space-between;align-items:center;">
-                            <strong style="font-size:1.05rem;">${title}</strong>${badge}
-                        </div>
-                        <div style="font-size:0.8rem;color:#666;margin-top:0.25rem;">${r.source} · ${r.source_country} · Confidence: ${(r.confidence*100).toFixed(0)}%</div>`;
-                    if (r.address) html += `<div style="margin-top:0.4rem;">📍 ${r.address}</div>`;
-                    if (r.phone) html += `<div>📞 ${r.phone}</div>`;
-                    if (r.email) html += `<div>✉️ ${r.email}</div>`;
-                    if (r.details && Object.keys(r.details).length > 0) {
-                        html += '<div style="margin-top:0.5rem;font-size:0.85rem;background:#f0f0f0;padding:0.75rem;border-radius:4px;">';
-                        Object.entries(r.details).forEach(([k,v]) => {
-                            if (v && v !== '' && k !== 'search_query' && k !== 'note') {
-                                const label = k.replace(/_/g,' ').replace(/\b\w/g, c => c.toUpperCase());
-                                const val = typeof v === 'string' && v.length > 200 ? v.substring(0,200)+'...' : v;
-                                html += `<div><strong>${label}:</strong> ${val}</div>`;
-                            }
-                        });
-                        html += '</div>';
-                    }
-                    if (r.source_url) html += `<div style="margin-top:0.4rem;"><a href="${r.source_url}" target="_blank" style="color:#335075;font-size:0.8rem;">View source →</a></div>`;
-                    html += '</div>';
-                });
-                resultsDiv.innerHTML = html;
-            })
-            .catch(err => {
-                resultsDiv.innerHTML = `<div style="padding:2rem;text-align:center;color:#AF3C43;">Search error: ${err.message}. The API may be starting up — please try again.</div>`;
-            });
+        result.innerHTML = '<p style="color:#1B6C35;">Message received. We will respond within 1 business day.</p>';
+        document.getElementById('contact-name').value = '';
+        document.getElementById('contact-subject').value = '';
+        document.getElementById('contact-message').value = '';
     }
 </script>
 </body>
