@@ -558,17 +558,6 @@
         document.getElementById('contact-message').value = '';
     }
 
-    document.addEventListener('DOMContentLoaded', function() {
-        ['reg-corp-name','reg-bn','reg-email','reg-contact'].forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.addEventListener('input', togglePayBtn);
-        });
-        const modal = document.getElementById('searchModal');
-        if (modal) modal.addEventListener('click', function(e) {
-            if (e.target === this) closeModal();
-        });
-    });
-
     function initiateSearch() {
         const first = document.getElementById('ind-first').value.trim();
         const last = document.getElementById('ind-last').value.trim();
@@ -595,30 +584,15 @@
         btn.style.background = enabled ? '#AF3C43' : '#ccc';
         btn.style.cursor = enabled ? 'pointer' : 'not-allowed';
     }
-    // listeners moved to DOMContentLoaded above
-    function proceedToPayment() {
-        const tos = document.getElementById('tos-agree').checked;
-        if (!tos) { alert('Please agree to Terms of Service.'); return; }
-        const corp = document.getElementById('reg-corp-name').value.trim();
-        const bn = document.getElementById('reg-bn').value.trim();
-        const email = document.getElementById('reg-email').value.trim();
-        if (!corp || !bn || !email) { alert('Please complete all required fields.'); return; }
-        fetch('https://api.skiptracing.ca/register', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                corp_name: corp, bn: bn,
-                province: document.getElementById('reg-province').value,
-                contact: document.getElementById('reg-contact').value,
-                email: email,
-                phone: document.getElementById('reg-phone').value,
-                timestamp: new Date().toISOString()
-            })
-        }).catch(() => {});
-        window.open('https://pay.pay.skiptracing.ca/skip-trace', '_blank');
-    }
-    document.getElementById('searchModal').addEventListener('click', function(e) {
-        if (e.target === this) closeModal();
+    document.addEventListener('DOMContentLoaded', function() {
+        ['reg-corp-name','reg-bn','reg-email','reg-contact'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.addEventListener('input', togglePayBtn);
+        });
+        const modal = document.getElementById('searchModal');
+        if (modal) modal.addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
     });
 
 </script>
