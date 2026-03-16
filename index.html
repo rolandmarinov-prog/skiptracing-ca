@@ -296,6 +296,7 @@
             <div class="comp-badge"><span class="dot dot-green"></span> Public Records Only</div>
             
             <div class="comp-badge"><span class="dot dot-green"></span> 47 Live API Connections</div>
+            <div class="comp-badge"><span class="dot dot-blue"></span> USPTO &amp; CIPO Patent Pending</div>
         </div>
     </div>
 </section>
@@ -396,7 +397,7 @@
                 <span>Asset searches include CPIC (CA), NHTSA (US), DVLA (UK), NEVDIS (AU), NZ Transport Agency, Interpol Stolen Motor Vehicles (7.8M+ records worldwide), Canadian Vessel Registry (Hull), HPI Check (UK), PPSR (AU), Europol iARMIS (EU), and all provincial registries.</span>
             </div>
 
-            <button class="search-btn" onclick="window.open('https://pay.pay.skiptracing.ca/skip-trace', '_blank')">Run Search · $19.99</button>
+            <button class="search-btn" onclick="initiateSearch()">Run Search · $19.99</button>
         </div>
 
                 <div class="search-footer">
@@ -515,7 +516,7 @@
     <p>Toronto, Ontario, Canada</p>
     <p>All searches use publicly available information only. PIPEDA Section 7(1)(d) compliant.</p>
     <div class="footer-legal">
-        <p>Patent pending. © 2026 SkipTracing.ca. All rights reserved.</p>
+        <p>Patent pending — USPTO &amp; CIPO. © 2026 SkipTracing.ca. All rights reserved.</p>
         <p>SkipTracing.ca is not a consumer reporting agency as defined by the FCRA or equivalent provincial legislation. Information provided is sourced exclusively from publicly accessible databases and is not to be used for purposes governed by the FCRA, PIPEDA, or similar legislation without independent verification.</p>
     </div>
     <div class="footer-tos">BY ACCESSING, BROWSING, OR USING THIS PLATFORM IN ANY MANNER, YOU (THE CORPORATION, ITS OFFICERS, DIRECTORS, SHAREHOLDERS, EMPLOYEES, AGENTS, SUCCESSORS, ASSIGNS, AFFILIATES, SUBSIDIARIES, PARENT ENTITIES, RELATED PARTIES, HEIRS, EXECUTORS, LEGAL REPRESENTATIVES, AND ALL PERSONS OR ENTITIES ACTING ON YOUR BEHALF OR AT YOUR DIRECTION) IRREVOCABLY, UNCONDITIONALLY, AND IN PERPETUITY AGREE TO INDEMNIFY, DEFEND, AND HOLD HARMLESS SKIPTRACNG.CA, ITS PRINCIPALS, AFFILIATES, ASSIGNS, OFFICERS, DIRECTORS, EMPLOYEES, CONTRACTORS, AND AGENTS FROM ANY AND ALL CLAIMS, DEMANDS, ACTIONS, PROCEEDINGS, DAMAGES, LOSSES, LIABILITIES, COSTS, EXPENSES (INCLUDING WITHOUT LIMITATION ALL LEGAL FEES, DISBURSEMENTS, AND COURT COSTS), PENALTIES, FINES, AND JUDGMENTS OF ANY NATURE WHATSOEVER, WHETHER KNOWN OR UNKNOWN, FORESEEN OR UNFORESEEN, PRESENT OR FUTURE, ARISING FROM OR IN ANY WAY RELATED TO YOUR ACCESS TO OR USE OF THIS PLATFORM, YOUR RELIANCE ON ANY INFORMATION PROVIDED HEREIN, ANY ACTION OR OMISSION TAKEN BASED ON RESULTS OBTAINED THROUGH THIS PLATFORM, OR ANY BREACH OF THESE TERMS. ALL INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY. TOTAL LIABILITY SHALL NOT EXCEED THE AMOUNT PAID FOR THE SPECIFIC SEARCH IN QUESTION. INDIVIDUAL USE STRICTLY PROHIBITED. CORPORATE REGISTRATION REQUIRED. GOVERNING LAW: PROVINCE OF ONTARIO, CANADA.
@@ -607,9 +608,11 @@
         }).catch(() => {});
         window.open('https://pay.pay.skiptracing.ca/skip-trace', '_blank');
     }
+    document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('searchModal').addEventListener('click', function(e) {
         if (e.target === this) closeModal();
     });
+    }); // end DOMContentLoaded
 
 </script>
 
