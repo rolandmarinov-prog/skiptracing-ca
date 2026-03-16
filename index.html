@@ -545,13 +545,9 @@
 
     function submitContact() {
         const name = document.getElementById('contact-name').value.trim();
-        const subject = document.getElementById('contact-subject').value.trim();
         const message = document.getElementById('contact-message').value.trim();
         const result = document.getElementById('contact-result');
-        if (!name || !message) {
-            result.innerHTML = '<p style="color:#AF3C43;">Please enter your name and message.</p>';
-            return;
-        }
+        if (!name || !message) { result.innerHTML = '<p style="color:#AF3C43;">Please enter your name and message.</p>'; return; }
         result.innerHTML = '<p style="color:#1B6C35;">Message received. We will respond within 1 business day.</p>';
         document.getElementById('contact-name').value = '';
         document.getElementById('contact-subject').value = '';
@@ -563,16 +559,14 @@
         const last = document.getElementById('ind-last').value.trim();
         const corp = document.getElementById('corp-name').value.trim();
         const vin = document.getElementById('vin-number').value.trim();
-        if (!first && !last && !corp && !vin) {
-            alert('Please enter at least a name, company, or VIN to search.');
-            return;
-        }
-        const modal = document.getElementById('searchModal');
-        modal.style.display = 'flex';
+        if (!first && !last && !corp && !vin) { alert('Please enter at least a name, company, or VIN to search.'); return; }
+        document.getElementById('searchModal').style.display = 'flex';
     }
+
     function closeModal() {
         document.getElementById('searchModal').style.display = 'none';
     }
+
     function togglePayBtn() {
         const tos = document.getElementById('tos-agree').checked;
         const corp = document.getElementById('reg-corp-name').value.trim();
@@ -584,6 +578,29 @@
         btn.style.background = enabled ? '#AF3C43' : '#ccc';
         btn.style.cursor = enabled ? 'pointer' : 'not-allowed';
     }
+
+    function proceedToPayment() {
+        const tos = document.getElementById('tos-agree').checked;
+        if (!tos) { alert('Please agree to Terms of Service.'); return; }
+        const corp = document.getElementById('reg-corp-name').value.trim();
+        const bn = document.getElementById('reg-bn').value.trim();
+        const email = document.getElementById('reg-email').value.trim();
+        if (!corp || !bn || !email) { alert('Please complete all required fields.'); return; }
+        fetch('https://api.skiptracing.ca/register', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                corp_name: corp, bn: bn,
+                province: document.getElementById('reg-province').value,
+                contact: document.getElementById('reg-contact').value,
+                email: email,
+                phone: document.getElementById('reg-phone').value,
+                timestamp: new Date().toISOString()
+            })
+        }).catch(() => {});
+        window.open('https://pay.pay.skiptracing.ca/skip-trace', '_blank');
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
         ['reg-corp-name','reg-bn','reg-email','reg-contact'].forEach(id => {
             const el = document.getElementById(id);
@@ -594,7 +611,6 @@
             if (e.target === this) closeModal();
         });
     });
-
 </script>
 
 <!-- MODAL -->
