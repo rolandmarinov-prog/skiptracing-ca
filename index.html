@@ -558,6 +558,17 @@
         document.getElementById('contact-message').value = '';
     }
 
+    document.addEventListener('DOMContentLoaded', function() {
+        ['reg-corp-name','reg-bn','reg-email','reg-contact'].forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.addEventListener('input', togglePayBtn);
+        });
+        const modal = document.getElementById('searchModal');
+        if (modal) modal.addEventListener('click', function(e) {
+            if (e.target === this) closeModal();
+        });
+    });
+
     function initiateSearch() {
         const first = document.getElementById('ind-first').value.trim();
         const last = document.getElementById('ind-last').value.trim();
@@ -584,9 +595,7 @@
         btn.style.background = enabled ? '#AF3C43' : '#ccc';
         btn.style.cursor = enabled ? 'pointer' : 'not-allowed';
     }
-    ['reg-corp-name','reg-bn','reg-email','reg-contact'].forEach(id => {
-        document.getElementById(id).addEventListener('input', togglePayBtn);
-    });
+    // listeners moved to DOMContentLoaded above
     function proceedToPayment() {
         const tos = document.getElementById('tos-agree').checked;
         if (!tos) { alert('Please agree to Terms of Service.'); return; }
@@ -608,11 +617,9 @@
         }).catch(() => {});
         window.open('https://pay.pay.skiptracing.ca/skip-trace', '_blank');
     }
-    document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('searchModal').addEventListener('click', function(e) {
         if (e.target === this) closeModal();
     });
-    }); // end DOMContentLoaded
 
 </script>
 
