@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SkipTracing.ca — Public Record Search</title>
-    <meta name="description" content="AI-powered skip tracing across 76+ public databases. Canada, USA, UK, Australia, NZ and worldwide. PIPEDA compliant. VIN, reverse phone, corporate registry.">
+    <meta name="description" content="AI-powered skip tracing across 130+ public databases. Canada, USA, UK, Australia, NZ and worldwide. PIPEDA compliant. VIN, reverse phone, corporate registry.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -265,7 +265,7 @@
 <body>
 
 <div class="gov-bar">
-    <span>SkipTracing.ca · Public Record Intelligence · PIPEDA Compliant</span>
+    <span>SkipTracing.ca · Public Record Intelligence · PIPEDA Compliant · B2B Only</span>
     <div>
         <a href="#sources">Sources</a>
         <a href="#pricing">Pricing</a>
@@ -276,14 +276,14 @@
 <header>
     <div class="header-left">
         <div class="logo">SkipTracing<span>.ca</span></div>
-        <div class="tagline">Public Record Intelligence<br>PIPEDA Section 7(1)(d) Compliant</div>
+        <div class="tagline">Public Record Intelligence<br>PIPEDA Section 7(1)(d) Compliant · B2B Corporate Access Only</div>
     </div>
     <nav>
         <a href="#search">Search</a>
         <a href="#pricing">Pricing</a>
         <a href="#sources">Databases</a>
         <a href="#contact">Contact</a>
-        <a href="#" class="btn-signin">Sign In</a>
+        
     </nav>
 </header>
 
@@ -295,7 +295,7 @@
             <div class="comp-badge"><span class="dot dot-red"></span> PIPEDA Compliant</div>
             <div class="comp-badge"><span class="dot dot-green"></span> Public Records Only</div>
             
-            <div class="comp-badge"><span class="dot dot-green"></span> 21 Live API Connections</div>
+            <div class="comp-badge"><span class="dot dot-green"></span> 47 Live API Connections</div>
         </div>
     </div>
 </section>
@@ -401,7 +401,7 @@
 
                 <div class="search-footer">
             <span>Querying <strong>130 databases</strong> worldwide</span>
-            <span><strong>21</strong> live API connections · Updated in real-time</span>
+            <span><strong>47</strong> live API connections · Updated in real-time</span>
         </div>
 
         <div id="results" style="display:none;margin-top:1.5rem;max-height:600px;overflow-y:auto;"></div>
@@ -418,8 +418,8 @@
                 <div class="price-amount">$19.99 <span>per search</span></div>
                 <ul>
                     <li>One subject — person, company, or VIN</li>
-                    <li>All 76 sources queried</li>
-                    <li>PDF report download</li>
+                    <li>All 130 sources queried</li>
+                    <li>Results emailed within 24h</li>
                     <li>Results in under 30 seconds</li>
                 </ul>
                 <a href="#search" class="price-btn">Start Search</a>
@@ -518,6 +518,8 @@
         <p>Patent pending. © 2026 SkipTracing.ca. All rights reserved.</p>
         <p>SkipTracing.ca is not a consumer reporting agency as defined by the FCRA or equivalent provincial legislation. Information provided is sourced exclusively from publicly accessible databases and is not to be used for purposes governed by the FCRA, PIPEDA, or similar legislation without independent verification.</p>
     </div>
+    <div class="footer-tos">BY ACCESSING, BROWSING, OR USING THIS PLATFORM IN ANY MANNER, YOU (THE CORPORATION, ITS OFFICERS, DIRECTORS, SHAREHOLDERS, EMPLOYEES, AGENTS, SUCCESSORS, ASSIGNS, AFFILIATES, SUBSIDIARIES, PARENT ENTITIES, RELATED PARTIES, HEIRS, EXECUTORS, LEGAL REPRESENTATIVES, AND ALL PERSONS OR ENTITIES ACTING ON YOUR BEHALF OR AT YOUR DIRECTION) IRREVOCABLY, UNCONDITIONALLY, AND IN PERPETUITY AGREE TO INDEMNIFY, DEFEND, AND HOLD HARMLESS SKIPTRACNG.CA, ITS PRINCIPALS, AFFILIATES, ASSIGNS, OFFICERS, DIRECTORS, EMPLOYEES, CONTRACTORS, AND AGENTS FROM ANY AND ALL CLAIMS, DEMANDS, ACTIONS, PROCEEDINGS, DAMAGES, LOSSES, LIABILITIES, COSTS, EXPENSES (INCLUDING WITHOUT LIMITATION ALL LEGAL FEES, DISBURSEMENTS, AND COURT COSTS), PENALTIES, FINES, AND JUDGMENTS OF ANY NATURE WHATSOEVER, WHETHER KNOWN OR UNKNOWN, FORESEEN OR UNFORESEEN, PRESENT OR FUTURE, ARISING FROM OR IN ANY WAY RELATED TO YOUR ACCESS TO OR USE OF THIS PLATFORM, YOUR RELIANCE ON ANY INFORMATION PROVIDED HEREIN, ANY ACTION OR OMISSION TAKEN BASED ON RESULTS OBTAINED THROUGH THIS PLATFORM, OR ANY BREACH OF THESE TERMS. ALL INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY. TOTAL LIABILITY SHALL NOT EXCEED THE AMOUNT PAID FOR THE SPECIFIC SEARCH IN QUESTION. INDIVIDUAL USE STRICTLY PROHIBITED. CORPORATE REGISTRATION REQUIRED. GOVERNING LAW: PROVINCE OF ONTARIO, CANADA.
+    </div>
 </footer>
 
 <script>
@@ -554,6 +556,119 @@
         document.getElementById('contact-subject').value = '';
         document.getElementById('contact-message').value = '';
     }
+
+    function initiateSearch() {
+        const first = document.getElementById('ind-first').value.trim();
+        const last = document.getElementById('ind-last').value.trim();
+        const corp = document.getElementById('corp-name').value.trim();
+        const vin = document.getElementById('vin-number').value.trim();
+        if (!first && !last && !corp && !vin) {
+            alert('Please enter at least a name, company, or VIN to search.');
+            return;
+        }
+        const modal = document.getElementById('searchModal');
+        modal.style.display = 'flex';
+    }
+    function closeModal() {
+        document.getElementById('searchModal').style.display = 'none';
+    }
+    function togglePayBtn() {
+        const tos = document.getElementById('tos-agree').checked;
+        const corp = document.getElementById('reg-corp-name').value.trim();
+        const bn = document.getElementById('reg-bn').value.trim();
+        const email = document.getElementById('reg-email').value.trim();
+        const btn = document.getElementById('pay-btn');
+        const enabled = tos && corp && bn && email;
+        btn.disabled = !enabled;
+        btn.style.background = enabled ? '#AF3C43' : '#ccc';
+        btn.style.cursor = enabled ? 'pointer' : 'not-allowed';
+    }
+    ['reg-corp-name','reg-bn','reg-email','reg-contact'].forEach(id => {
+        document.getElementById(id).addEventListener('input', togglePayBtn);
+    });
+    function proceedToPayment() {
+        const tos = document.getElementById('tos-agree').checked;
+        if (!tos) { alert('Please agree to Terms of Service.'); return; }
+        const corp = document.getElementById('reg-corp-name').value.trim();
+        const bn = document.getElementById('reg-bn').value.trim();
+        const email = document.getElementById('reg-email').value.trim();
+        if (!corp || !bn || !email) { alert('Please complete all required fields.'); return; }
+        fetch('https://api.skiptracing.ca/register', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                corp_name: corp, bn: bn,
+                province: document.getElementById('reg-province').value,
+                contact: document.getElementById('reg-contact').value,
+                email: email,
+                phone: document.getElementById('reg-phone').value,
+                timestamp: new Date().toISOString()
+            })
+        }).catch(() => {});
+        window.open('https://pay.pay.skiptracing.ca/skip-trace', '_blank');
+    }
+    document.getElementById('searchModal').addEventListener('click', function(e) {
+        if (e.target === this) closeModal();
+    });
+
 </script>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="searchModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:1000;justify-content:center;align-items:center;">
+    <div style="background:#fff;border-radius:6px;padding:2rem;max-width:560px;width:90%;max-height:90vh;overflow-y:auto;position:relative;">
+        <button onclick="closeModal()" style="position:absolute;top:1rem;right:1rem;background:none;border:none;font-size:1.3rem;cursor:pointer;color:#666;">&#10005;</button>
+        <div style="text-align:center;margin-bottom:1.5rem;">
+            <div style="font-size:2.5rem;">&#128269;</div>
+            <h2 style="font-size:1.4rem;font-weight:700;color:#1B6C35;margin-bottom:0.3rem;">Your results are ready.</h2>
+            <p style="font-size:0.9rem;color:#666;">Complete registration and payment to receive your report.</p>
+        </div>
+        <div style="background:#f5f5f5;border-radius:4px;padding:1rem 1.2rem;margin-bottom:1rem;border-left:3px solid #26374A;">
+            <h3 style="font-size:0.85rem;font-weight:700;color:#26374A;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.5rem;">Step 1 — Corporate Registration</h3>
+            <input type="text" id="reg-corp-name" placeholder="Registered Corporation / Business Name *" style="width:100%;padding:0.6rem 0.75rem;border:1px solid #ccc;border-radius:4px;font-size:0.9rem;font-family:inherit;margin-bottom:0.5rem;">
+            <input type="text" id="reg-bn" placeholder="Business Number (BN) or Corporation # *" style="width:100%;padding:0.6rem 0.75rem;border:1px solid #ccc;border-radius:4px;font-size:0.9rem;font-family:inherit;margin-bottom:0.5rem;">
+            <select id="reg-province" style="width:100%;padding:0.6rem 0.75rem;border:1px solid #ccc;border-radius:4px;font-size:0.9rem;font-family:inherit;margin-bottom:0.5rem;">
+                <option value="">— Province / State of Incorporation —</option>
+                <option value="ON">Ontario</option><option value="BC">British Columbia</option>
+                <option value="AB">Alberta</option><option value="QC">Quebec</option>
+                <option value="MB">Manitoba</option><option value="SK">Saskatchewan</option>
+                <option value="NS">Nova Scotia</option><option value="NB">New Brunswick</option>
+                <option value="FED">Federal (Canada)</option><option value="US">United States</option>
+            </select>
+            <input type="text" id="reg-contact" placeholder="Contact Name *" style="width:100%;padding:0.6rem 0.75rem;border:1px solid #ccc;border-radius:4px;font-size:0.9rem;font-family:inherit;margin-bottom:0.5rem;">
+            <input type="email" id="reg-email" placeholder="Corporate Email Address *" style="width:100%;padding:0.6rem 0.75rem;border:1px solid #ccc;border-radius:4px;font-size:0.9rem;font-family:inherit;margin-bottom:0.5rem;">
+            <input type="tel" id="reg-phone" placeholder="Corporate Phone *" style="width:100%;padding:0.6rem 0.75rem;border:1px solid #ccc;border-radius:4px;font-size:0.9rem;font-family:inherit;margin-bottom:0.5rem;">
+        </div>
+        <div style="background:#f5f5f5;border-radius:4px;padding:1rem 1.2rem;margin-bottom:1rem;border-left:3px solid #26374A;">
+            <h3 style="font-size:0.85rem;font-weight:700;color:#26374A;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.5rem;">Step 2 — Terms of Service</h3>
+            <div style="background:#fff;border:1px solid #ccc;border-radius:4px;padding:0.75rem;margin-bottom:0.75rem;max-height:120px;overflow-y:auto;font-size:0.78rem;color:#666;line-height:1.5;">
+                TERMS OF SERVICE — SKIPTRACNG.CA<br><br>
+                By accessing and using SkipTracing.ca ("Platform"), you, the registered corporation, its officers, directors, employees, agents, successors, assigns, affiliates, subsidiaries, parent companies, and all related parties (collectively "You") agree to the following terms in their entirety:<br><br>
+                1. INDEMNIFICATION. You irrevocably and unconditionally indemnify, defend and hold harmless SkipTracing.ca, its principals, affiliates, assigns, officers, directors, employees and agents from any and all claims, damages, losses, liabilities, costs, expenses (including legal fees) of any nature whatsoever, arising from or related to your use of this Platform, your reliance on any information provided, or any action taken based on results obtained through this Platform.<br><br>
+                2. NO WARRANTY. All information is provided "AS IS" without warranty of any kind. SkipTracing.ca makes no representations as to accuracy, completeness, currentness, or fitness for any particular purpose.<br><br>
+                3. LIMITATION OF LIABILITY. Our total aggregate liability shall not exceed the amount paid for the specific search giving rise to any claim.<br><br>
+                4. ACCEPTABLE USE. You confirm you are a registered corporation with a lawful business purpose. You assume all responsibility for how you use results. Individual use is strictly prohibited.<br><br>
+                5. DATA RETENTION. We collect and retain your corporate registration information in accordance with PIPEDA. We log access metadata (who, when, IP) but not search subject data.<br><br>
+                6. COMMUNICATIONS. By registering you agree to receive communications about related services from SkipTracing.ca and its affiliates.<br><br>
+                7. GOVERNING LAW. These terms are governed by the laws of the Province of Ontario and the laws of Canada applicable therein.
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:0.5rem;margin-bottom:1rem;font-size:0.85rem;">
+                <input type="checkbox" id="tos-agree" onchange="togglePayBtn()" style="width:auto;margin:0;margin-top:3px;flex-shrink:0;">
+                <label for="tos-agree">I have read and agree to the Terms of Service. I confirm I am authorized to bind the registered corporation named above. I understand that proceeding constitutes a legally binding agreement.</label>
+            </div>
+        </div>
+        <div style="background:#f5f5f5;border-radius:4px;padding:1rem 1.2rem;margin-bottom:1rem;border-left:3px solid #26374A;">
+            <h3 style="font-size:0.85rem;font-weight:700;color:#26374A;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:0.5rem;">Step 3 — Payment · $19.99 + HST</h3>
+            <p style="font-size:0.85rem;color:#666;margin-bottom:0.75rem;">Total: <strong>$22.59 CAD</strong> · Apple Pay · Google Pay · Credit Card</p>
+            <button id="pay-btn" disabled onclick="proceedToPayment()" style="width:100%;padding:0.9rem;background:#ccc;color:#fff;border:none;border-radius:4px;font-size:1.05rem;font-weight:700;cursor:not-allowed;font-family:inherit;">
+                Proceed to Payment · $22.59
+            </button>
+        </div>
+    </div>
+</div>
+
+<style>
+.modal-overlay.active { display: flex !important; }
+.footer-tos { margin-top: 0.75rem; font-size: 6px; color: #777; line-height: 1.3; max-width: 900px; margin-left: auto; margin-right: auto; }
+</style>
 </body>
 </html>
