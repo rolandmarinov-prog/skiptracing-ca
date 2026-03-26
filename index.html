@@ -50,12 +50,6 @@
             font-weight: 500; margin-left: 2rem; padding-bottom: 2px;
         }
         nav a:hover { color: var(--red); text-decoration: underline; }
-        .btn-signin {
-            background: var(--blue); color: #fff; padding: 0.45rem 1.2rem;
-            border-radius: 4px; font-size: 0.85rem; font-weight: 600;
-            text-decoration: none; margin-left: 2rem;
-        }
-        .btn-signin:hover { background: var(--light-blue); }
         .hero {
             background: var(--surface); border-bottom: 1px solid var(--border-light);
             padding: 3rem 2rem; text-align: center;
@@ -127,10 +121,7 @@
             text-transform: uppercase; letter-spacing: 0.8px;
             margin-bottom: 0.6rem; margin-top: 0.5rem;
         }
-        .section-divider {
-            border-top: 1px solid var(--border-light);
-            margin: 1rem 0;
-        }
+        .section-divider { border-top: 1px solid var(--border-light); margin: 1rem 0; }
         .search-btn {
             width: 100%; padding: 0.8rem; margin-top: 0.5rem;
             background: var(--red); color: #fff; border: none; border-radius: 4px;
@@ -197,42 +188,19 @@
             margin-bottom: 0.3rem; text-align: center;
         }
         .sources-section > p { text-align: center; color: var(--text-light); margin-bottom: 2rem; font-size: 0.95rem; }
-        .source-country { margin-bottom: 1.5rem; }
-        .source-country h3 {
-            font-size: 0.9rem; font-weight: 700; color: var(--blue);
-            text-transform: uppercase; letter-spacing: 0.5px;
-            border-bottom: 2px solid var(--border-light); padding-bottom: 0.4rem; margin-bottom: 0.6rem;
-        }
-        .source-list { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-        .src {
-            background: var(--surface); border: 1px solid var(--border-light);
-            border-radius: 3px; padding: 0.35rem 0.7rem; font-size: 0.78rem;
-            color: var(--text); display: inline-flex; align-items: center; gap: 0.3rem;
-        }
-        .src.api { border-color: #AED6F1; background: #F0F8FF; }
-        .src .api-tag {
-            font-size: 0.6rem; background: var(--blue); color: #fff;
-            padding: 0.05rem 0.3rem; border-radius: 2px; font-weight: 700;
-        }
         .contact-section {
             text-align: center; padding: 3rem 2rem;
             background: var(--surface); border-top: 1px solid var(--border-light);
         }
         .contact-section h2 { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--black); }
         .contact-section p { color: var(--text-light); font-size: 0.95rem; margin-bottom: 1.5rem; }
-        .contact-form {
-            max-width: 500px; margin: 0 auto; text-align: left;
-        }
+        .contact-form { max-width: 500px; margin: 0 auto; text-align: left; }
         .contact-form input, .contact-form textarea, .contact-form select {
             width: 100%; padding: 0.65rem 0.75rem; margin-bottom: 0.75rem;
             border: 1px solid var(--border); border-radius: 4px;
             font-size: 0.95rem; font-family: inherit; color: var(--text); background: #fff;
         }
         .contact-form textarea { height: 120px; resize: vertical; }
-        .contact-form input:focus, .contact-form textarea:focus {
-            outline: none; border-color: var(--blue);
-            box-shadow: 0 0 0 2px rgba(38,55,74,0.15);
-        }
         .contact-submit {
             width: 100%; padding: 0.8rem; background: var(--red); color: #fff;
             border: none; border-radius: 4px; font-size: 1rem; font-weight: 600;
@@ -249,6 +217,7 @@
             margin-top: 1rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.15);
             font-size: 0.75rem; color: #999;
         }
+        .footer-tos { margin-top: 0.75rem; font-size: 6px; color: #777; line-height: 1.3; max-width: 900px; margin-left: auto; margin-right: auto; }
         @media (max-width: 768px) {
             .gov-bar { flex-direction: column; text-align: center; gap: 0.3rem; }
             header { flex-direction: column; gap: 1rem; text-align: center; }
@@ -283,7 +252,6 @@
         <a href="#pricing">Pricing</a>
         <a href="#sources">Databases</a>
         <a href="#contact">Contact</a>
-        
     </nav>
 </header>
 
@@ -294,7 +262,6 @@
         <div class="compliance-badges">
             <div class="comp-badge"><span class="dot dot-red"></span> PIPEDA Compliant</div>
             <div class="comp-badge"><span class="dot dot-green"></span> Public Records Only</div>
-            
             <div class="comp-badge"><span class="dot dot-green"></span> 47 Live API Connections</div>
             <div class="comp-badge"><span class="dot dot-blue"></span> USPTO &amp; CIPO Patent Pending</div>
         </div>
@@ -308,7 +275,6 @@
     <div class="search-box">
         <div class="search-panel active" id="panel-search">
 
-            <!-- PERSON -->
             <div class="section-label">Person</div>
             <div class="form-row">
                 <div class="field"><label>First Name</label><input type="text" id="ind-first" placeholder="John"></div>
@@ -350,7 +316,6 @@
 
             <div class="section-divider"></div>
 
-            <!-- COMPANY -->
             <div class="section-label">Company / Corporation (optional)</div>
             <div class="form-row">
                 <div class="field" style="flex:2"><label>Company or Business Name</label><input type="text" id="corp-name" placeholder="Acme Corp Inc."></div>
@@ -369,7 +334,6 @@
 
             <div class="section-divider"></div>
 
-            <!-- ASSET -->
             <div class="section-label">Vehicle / Vessel / Asset (optional)</div>
             <div class="form-row">
                 <div class="field">
@@ -400,7 +364,7 @@
             <button class="search-btn" onclick="initiateSearch()">Run Search · $19.99</button>
         </div>
 
-                <div class="search-footer">
+        <div class="search-footer">
             <span>Querying <strong>130 databases</strong> worldwide</span>
             <span><strong>47</strong> live API connections · Updated in real-time</span>
         </div>
@@ -486,8 +450,8 @@
         </div>
     </div>
     <div style="max-width:700px;margin:1.5rem auto;background:#EBF5FB;border:1px solid #AED6F1;border-radius:4px;padding:1.2rem;text-align:center;font-size:0.9rem;color:#26374A;">
-        &#10003; Canadian court &amp; lien registries &nbsp;&middot;&nbsp; &#10003; Cross-border asset tracing &nbsp;&middot;&nbsp; &#10003; Multi-jurisdictional coverage<br>
-        &#10003; Stolen asset verification &nbsp;&middot;&nbsp; &#10003; Corporate &amp; individual records &nbsp;&middot;&nbsp; &#10003; PIPEDA compliant
+        ✓ Canadian court &amp; lien registries &nbsp;·&nbsp; ✓ Cross-border asset tracing &nbsp;·&nbsp; ✓ Multi-jurisdictional coverage<br>
+        ✓ Stolen asset verification &nbsp;·&nbsp; ✓ Corporate &amp; individual records &nbsp;·&nbsp; ✓ PIPEDA compliant
     </div>
 </section>
 
@@ -519,8 +483,7 @@
         <p>Patent pending — USPTO &amp; CIPO. © 2026 SkipTracing.ca. All rights reserved.</p>
         <p>SkipTracing.ca is not a consumer reporting agency as defined by the FCRA or equivalent provincial legislation. Information provided is sourced exclusively from publicly accessible databases and is not to be used for purposes governed by the FCRA, PIPEDA, or similar legislation without independent verification.</p>
     </div>
-    <div class="footer-tos">BY ACCESSING, BROWSING, OR USING THIS PLATFORM IN ANY MANNER, YOU (THE CORPORATION, ITS OFFICERS, DIRECTORS, SHAREHOLDERS, EMPLOYEES, AGENTS, SUCCESSORS, ASSIGNS, AFFILIATES, SUBSIDIARIES, PARENT ENTITIES, RELATED PARTIES, HEIRS, EXECUTORS, LEGAL REPRESENTATIVES, AND ALL PERSONS OR ENTITIES ACTING ON YOUR BEHALF OR AT YOUR DIRECTION) IRREVOCABLY, UNCONDITIONALLY, AND IN PERPETUITY AGREE TO INDEMNIFY, DEFEND, AND HOLD HARMLESS SKIPTRACNG.CA, ITS PRINCIPALS, AFFILIATES, ASSIGNS, OFFICERS, DIRECTORS, EMPLOYEES, CONTRACTORS, AND AGENTS FROM ANY AND ALL CLAIMS, DEMANDS, ACTIONS, PROCEEDINGS, DAMAGES, LOSSES, LIABILITIES, COSTS, EXPENSES (INCLUDING WITHOUT LIMITATION ALL LEGAL FEES, DISBURSEMENTS, AND COURT COSTS), PENALTIES, FINES, AND JUDGMENTS OF ANY NATURE WHATSOEVER, WHETHER KNOWN OR UNKNOWN, FORESEEN OR UNFORESEEN, PRESENT OR FUTURE, ARISING FROM OR IN ANY WAY RELATED TO YOUR ACCESS TO OR USE OF THIS PLATFORM, YOUR RELIANCE ON ANY INFORMATION PROVIDED HEREIN, ANY ACTION OR OMISSION TAKEN BASED ON RESULTS OBTAINED THROUGH THIS PLATFORM, OR ANY BREACH OF THESE TERMS. ALL INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY. TOTAL LIABILITY SHALL NOT EXCEED THE AMOUNT PAID FOR THE SPECIFIC SEARCH IN QUESTION. INDIVIDUAL USE STRICTLY PROHIBITED. CORPORATE REGISTRATION REQUIRED. GOVERNING LAW: PROVINCE OF ONTARIO, CANADA.
-    </div>
+    <div class="footer-tos">BY ACCESSING, BROWSING, OR USING THIS PLATFORM IN ANY MANNER, YOU (THE CORPORATION, ITS OFFICERS, DIRECTORS, SHAREHOLDERS, EMPLOYEES, AGENTS, SUCCESSORS, ASSIGNS, AFFILIATES, SUBSIDIARIES, PARENT ENTITIES, RELATED PARTIES, HEIRS, EXECUTORS, LEGAL REPRESENTATIVES, AND ALL PERSONS OR ENTITIES ACTING ON YOUR BEHALF OR AT YOUR DIRECTION) IRREVOCABLY, UNCONDITIONALLY, AND IN PERPETUITY AGREE TO INDEMNIFY, DEFEND, AND HOLD HARMLESS SKIPTRACNG.CA, ITS PRINCIPALS, AFFILIATES, ASSIGNS, OFFICERS, DIRECTORS, EMPLOYEES, CONTRACTORS, AND AGENTS FROM ANY AND ALL CLAIMS, DEMANDS, ACTIONS, PROCEEDINGS, DAMAGES, LOSSES, LIABILITIES, COSTS, EXPENSES (INCLUDING WITHOUT LIMITATION ALL LEGAL FEES, DISBURSEMENTS, AND COURT COSTS), PENALTIES, FINES, AND JUDGMENTS OF ANY NATURE WHATSOEVER, WHETHER KNOWN OR UNKNOWN, FORESEEN OR UNFORESEEN, PRESENT OR FUTURE, ARISING FROM OR IN ANY WAY RELATED TO YOUR ACCESS TO OR USE OF THIS PLATFORM, YOUR RELIANCE ON ANY INFORMATION PROVIDED HEREIN, ANY ACTION OR OMISSION TAKEN BASED ON RESULTS OBTAINED THROUGH THIS PLATFORM, OR ANY BREACH OF THESE TERMS. ALL INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY. TOTAL LIABILITY SHALL NOT EXCEED THE AMOUNT PAID FOR THE SPECIFIC SEARCH IN QUESTION. INDIVIDUAL USE STRICTLY PROHIBITED. CORPORATE REGISTRATION REQUIRED. GOVERNING LAW: PROVINCE OF ONTARIO, CANADA.</div>
 </footer>
 
 <script>
@@ -644,16 +607,14 @@
                 TERMS OF SERVICE — SKIPTRACNG.CA<br><br>
                 By accessing and using SkipTracing.ca ("Platform"), you, the registered corporation, its officers, directors, employees, agents, successors, assigns, affiliates, subsidiaries, parent companies, and all related parties (collectively "You") agree to the following terms in their entirety:<br><br>
                 1. INDEMNIFICATION. You irrevocably and unconditionally indemnify, defend and hold harmless SkipTracing.ca, its principals, affiliates, assigns, officers, directors, employees and agents from any and all claims, damages, losses, liabilities, costs, expenses (including legal fees) of any nature whatsoever, arising from or related to your use of this Platform, your reliance on any information provided, or any action taken based on results obtained through this Platform.<br><br>
-                2. NO WARRANTY. All information is provided "AS IS" without warranty of any kind. SkipTracing.ca makes no representations as to accuracy, completeness, currentness, or fitness for any particular purpose.<br><br>
+                2. NO WARRANTY. All information is provided "AS IS" without warranty of any kind.<br><br>
                 3. LIMITATION OF LIABILITY. Our total aggregate liability shall not exceed the amount paid for the specific search giving rise to any claim.<br><br>
-                4. ACCEPTABLE USE. You confirm you are a registered corporation with a lawful business purpose. You assume all responsibility for how you use results. Individual use is strictly prohibited.<br><br>
-                5. DATA RETENTION. We collect and retain your corporate registration information in accordance with PIPEDA. We log access metadata (who, when, IP) but not search subject data.<br><br>
-                6. COMMUNICATIONS. By registering you agree to receive communications about related services from SkipTracing.ca and its affiliates.<br><br>
-                7. GOVERNING LAW. These terms are governed by the laws of the Province of Ontario and the laws of Canada applicable therein.
+                4. ACCEPTABLE USE. You confirm you are a registered corporation with a lawful business purpose. Individual use is strictly prohibited.<br><br>
+                5. GOVERNING LAW. These terms are governed by the laws of the Province of Ontario and the laws of Canada applicable therein.
             </div>
             <div style="display:flex;align-items:flex-start;gap:0.5rem;margin-bottom:1rem;font-size:0.85rem;">
                 <input type="checkbox" id="tos-agree" onchange="togglePayBtn()" style="width:auto;margin:0;margin-top:3px;flex-shrink:0;">
-                <label for="tos-agree">I have read and agree to the Terms of Service. I confirm I am authorized to bind the registered corporation named above. I understand that proceeding constitutes a legally binding agreement.</label>
+                <label for="tos-agree">I have read and agree to the Terms of Service. I confirm I am authorized to bind the registered corporation named above.</label>
             </div>
         </div>
         <div style="background:#f5f5f5;border-radius:4px;padding:1rem 1.2rem;margin-bottom:1rem;border-left:3px solid #26374A;">
@@ -666,9 +627,5 @@
     </div>
 </div>
 
-<style>
-.modal-overlay.active { display: flex !important; }
-.footer-tos { margin-top: 0.75rem; font-size: 6px; color: #777; line-height: 1.3; max-width: 900px; margin-left: auto; margin-right: auto; }
-</style>
 </body>
 </html>
