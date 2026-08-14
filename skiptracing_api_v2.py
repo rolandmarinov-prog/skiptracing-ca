@@ -381,7 +381,7 @@ def _json(url, timeout=TIMEOUT):
 # ============================================================
 # LIVE SEARCH ENGINES
 
-ROCKETREACH_API_KEY = os.environ.get("ROCKETREACH_API_KEY", "3030e9k88ab215de8acc66242ba32fdda11fab2")
+ROCKETREACH_API_KEY = os.environ.get("ROCKETREACH_API_KEY", "")
 
 def search_rocketreach(first: str, last: str, company: str = "", location: str = "") -> List[SearchResult]:
     results = []
